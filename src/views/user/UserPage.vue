@@ -51,6 +51,48 @@
   </header>
 
   <router-view></router-view>
+
+  <footer class="footer bg-secondary">
+    <!-- footer list -->
+    <ul class="d-flex mb-2 mb-lg-0 px-5 px-lg-6 py-3 text-center border-top border-bottom border-1">
+      <li class="border-end border-1 pe-4 py-2">
+        <a class="link-gray" href="#">最新消息</a>
+      </li>
+      <li class="border-end border-1 px-4 py-2">
+        <router-link to="/products" class="link-gray">漫遊行程</router-link>
+      </li>
+      <li class="border-end border-1 px-4 py-2">
+        <a class="link-gray" href="#">所有地點</a>
+      </li>
+      <li class="px-4 py-2">
+        <a class="link-gray" href="#">園內住宿</a>
+      </li>
+      <li class="py-2 py-lg-0">
+        <router-link to="/cart" class="btn btn-primary text-white ms-lg-3 h-100">
+          <i class="bi bi-bag me-1"></i>查看購物車
+        </router-link>
+      </li>
+    </ul>
+    <div class="px-5 px-lg-6 py-6">
+      <div class="fs-4 mb-3">
+        <a href="#" class="link-dark-green footer-icon">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="#" class="link-dark-green footer-icon">
+          <i class="bi bi-instagram mx-4"></i>
+        </a>
+        <a href="#" class="link-dark-green footer-icon">
+          <i class="bi bi-envelope"></i>
+        </a>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="english fs-6 text-gray">Copyright © 漫途森旅 All Rights Reserved.</div>
+        <button type="button" class="btn btn-dark-green text-white" href="#">
+          <i class="bi bi-laptop"></i> 登入後台
+        </button>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script></script>
