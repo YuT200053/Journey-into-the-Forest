@@ -5,12 +5,8 @@
       <div class="container">
         <!-- logo & slogan -->
         <div class="text-center mb-5">
-          <img
-            src="../../../public/logo/logo.png"
-            alt="漫途森旅"
-            class="object-fit-cover mb-5 banner-logo"
-          />
-          <h3 class="fw-bold">
+          <img src="/logo/logo.png" alt="漫途森旅" class="object-fit-cover mb-5 banner-logo" />
+          <h3 class="fw-bold ls-2">
             享受無拘<span class="text-primary">漫遊之途</span>，浸入盎然<span class="text-primary"
               >森林</span
             >來場放慢身心的<span class="text-primary">旅程</span>
@@ -20,17 +16,17 @@
         <!-- link -->
         <div class="row banner-list gy-3 mb-3">
           <div class="col-12 col-lg-4">
-            <a href="#" class="link-secondary text-center fs-3">
+            <router-link to="/products" class="link-secondary text-center fs-3">
               <div class="img-box">
-                <img src="../../../public/userHome/journey.png" alt="漫遊行程" />
+                <img src="/userHome/journey.png" alt="漫遊行程" />
                 <div class="banner-list-text">漫 遊 行 程</div>
               </div>
-            </a>
+            </router-link>
           </div>
           <div class="col-12 col-lg-4">
             <a href="#" class="link-secondary text-center fs-3">
               <div class="img-box">
-                <img src="../../../public/userHome/ticket.png" alt="票券" />
+                <img src="/userHome/ticket.png" alt="票券" />
                 <div class="banner-list-text">票 券</div>
               </div>
             </a>
@@ -38,7 +34,7 @@
           <div class="col-12 col-lg-4">
             <a href="#" class="link-secondary text-center fs-3">
               <div class="img-box">
-                <img src="../../../public/userHome/accomidation.png" alt="住宿" />
+                <img src="/userHome/accomidation.png" alt="住宿" />
                 <div class="banner-list-text">園 內 住 宿</div>
               </div>
             </a>
@@ -139,7 +135,7 @@
     <section class="journey pb-7 bg-secondary">
       <!-- 跑馬燈 -->
       <div class="journey-text">
-        <div class="swiper journey-swiper fs-1 py-3 ls-5" data-aos="fade-up">
+        <!-- <div class="swiper journey-swiper fs-1 py-3 ls-5" data-aos="fade-up">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               在山林之中深呼吸．Take a deep breath in the forest．在山林之中深呼吸．
@@ -148,7 +144,25 @@
               Take a deep breath in the forest．在山林之中深呼吸．Take a deep breath in the forest．
             </div>
           </div>
-        </div>
+        </div> -->
+        <!-- 123 -->
+        <swiper
+          :slidesPerView="auto"
+          :allowTouchMove="false"
+          :spaceBetween="0"
+          :speed="80000"
+          :loop="true"
+          :autoplay="{ delay: 0, disableOnInteraction: false }"
+          :modules="modules"
+          class="journey-swiper fs-1 py-3 ls-5"
+        >
+          <swiper-slide>
+            在山林之中深呼吸．Take a deep breath in the forest．在山林之中深呼吸．
+          </swiper-slide>
+          <swiper-slide>
+            Take a deep breath in the forest．在山林之中深呼吸．Take a deep breath in the forest．
+          </swiper-slide>
+        </swiper>
       </div>
       <!-- journey-title -->
       <div class="mt-5 text-center">
@@ -163,7 +177,7 @@
               <div class="row g-0">
                 <a href="#" class="col-md-6 img-box">
                   <img
-                    src="../../../public/userHome/test.jpg"
+                    src="/userHome/test.jpg"
                     class="img-fluid rounded-start h-100 w-100 object-fit-cover"
                     alt="太平山"
                   />
@@ -219,7 +233,7 @@
               <div class="row g-0">
                 <a href="#" class="col-md-6 img-box">
                   <img
-                    src="../../../public/userHome/test.jpg"
+                    src="/userHome/test.jpg"
                     class="img-fluid rounded-start h-100 w-100 object-fit-cover"
                     alt="太平山"
                   />
@@ -275,7 +289,7 @@
               <div class="row g-0">
                 <a href="#" class="col-md-6 img-box">
                   <img
-                    src="../../../public/userHome/test.jpg"
+                    src="/userHome/test.jpg"
                     class="img-fluid rounded-start h-100 w-100 object-fit-cover"
                     alt="太平山"
                   />
@@ -329,13 +343,13 @@
         </div>
 
         <!-- 更多行程 -->
-        <a
-          href="#"
+        <router-link
+          to="/products"
           class="read-all link-dark-green text-center border-top border-bottom border-1 py-5 d-block fs-4 ls-5"
         >
           <span class="pe-2">更多行程</span>
           <i class="read-all-icon bi bi-arrow-up-right-circle-fill"></i>
-        </a>
+        </router-link>
       </div>
     </section>
 
@@ -359,43 +373,43 @@
                 非假日 08:00-17:00<br />例假日 07:00-17:00
               </p>
             </a>
-            <img src="../../../public/userHome/home_bg.jpg" alt="阿里山" />
+            <img src="/userHome/home_bg.jpg" alt="阿里山" />
           </div>
           <div class="swiper-slide">
             <a href="#" class="swiper-slide-link">
               <h4 class="fw-bold ls-5 text-white">太平山國家森林遊樂區</h4>
             </a>
-            <img src="../../../public/userHome/home_bg.jpg" alt="太平山" />
+            <img src="/userHome/home_bg.jpg" alt="太平山" />
           </div>
           <div class="swiper-slide">
             <a href="#" class="swiper-slide-link">
               <h4 class="fw-bold ls-5 text-white">武陵國家森林遊樂區</h4>
             </a>
-            <img src="../../../public/userHome/home_bg.jpg" alt="武陵" />
+            <img src="/userHome/home_bg.jpg" alt="武陵" />
           </div>
           <div class="swiper-slide">
             <a href="#" class="swiper-slide-link">
               <h4 class="fw-bold ls-5 text-white">內洞國家森林遊樂區</h4>
             </a>
-            <img src="../../../public/userHome/home_bg.jpg" alt="內洞" />
+            <img src="/userHome/home_bg.jpg" alt="內洞" />
           </div>
           <div class="swiper-slide">
             <a href="#" class="swiper-slide-link">
               <h4 class="fw-bold ls-5 text-white">奧萬大國家森林遊樂區</h4>
             </a>
-            <img src="../../../public/userHome/home_bg.jpg" alt="奧萬大" />
+            <img src="/userHome/home_bg.jpg" alt="奧萬大" />
           </div>
           <div class="swiper-slide">
             <a href="#" class="swiper-slide-link">
               <h4 class="fw-bold ls-5 text-white">東眼山國家森林遊樂區</h4>
             </a>
-            <img src="../../../public/userHome/home_bg.jpg" alt="東眼山" />
+            <img src="/userHome/home_bg.jpg" alt="東眼山" />
           </div>
           <div class="swiper-slide">
             <a href="#" class="swiper-slide-link">
               <h4 class="fw-bold ls-5 text-white">大雪山國家森林遊樂區</h4>
             </a>
-            <img src="../../../public/userHome/home_bg.jpg" alt="大雪山" />
+            <img src="/userHome/home_bg.jpg" alt="大雪山" />
           </div>
         </div>
       </div>
@@ -416,7 +430,7 @@
     class="bg-light-green border-1 border-top p-5 p-lg-6 d-flex justify-content-between flex-column flex-xl-row"
   >
     <!-- logo -->
-    <img src="../../../public/logo/logo.png" alt="漫途森旅" class="footer-logo mb-5 mb-xl-0" />
+    <img src="/logo/logo.png" alt="漫途森旅" class="footer-logo mb-5 mb-xl-0" />
     <div class="text-start text-xl-end d-flex flex-column justify-content-between flex-shirk-1">
       <!-- slogan -->
       <div class="mb-3">
@@ -446,3 +460,25 @@
     </div>
   </div>
 </template>
+
+<script>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+
+export default {
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  data() {
+    return {
+      modules: [Autoplay]
+    };
+  }
+};
+</script>
+
+<style></style>

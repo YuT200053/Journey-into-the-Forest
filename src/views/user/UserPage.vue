@@ -6,7 +6,7 @@
         <!-- logo -->
         <RouterLink to="/" class="navbar-brand">
           <img
-            src="../../../public/logo/logo-navbar.png"
+            src="/logo/logo-navbar.png"
             alt="Logo"
             height="50"
             class="d-inline-block align-text-top object-fit-cover w-100"
