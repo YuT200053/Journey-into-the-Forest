@@ -1,14 +1,19 @@
-import './assets/main.css'
+// 導入 bootstrap
+import 'bootstrap/scss/bootstrap.scss';
+// 導入 vue axios，可以直接用 this.axios
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
-import App from './App.vue'
-import router from './router'
+import App from './App.vue';
+import router from './router';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
+app.use(createPinia());
+app.use(router);
+app.use(VueAxios, axios);
 
-app.mount('#app')
+app.mount('#app');
