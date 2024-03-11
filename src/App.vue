@@ -1,35 +1,3 @@
-<script>
-import { RouterView } from 'vue-router';
-
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination } from 'swiper/modules';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-export default {
-  components: {
-    RouterView,
-    Swiper,
-    SwiperSlide
-  },
-  mounted() {
-    this.axios
-      .get('https://vue3-course-api.hexschool.io/v2/api/yu-t-200053/products/all')
-      .then((res) => {
-        console.log(res.data);
-      });
-  },
-  data() {
-    return {
-      modules: [Navigation, Pagination]
-    };
-  }
-};
-</script>
-
 <template>
   <RouterView />
 
@@ -62,6 +30,38 @@ export default {
     </swiper>
   </div>
 </template>
+
+<script>
+import { RouterView } from 'vue-router';
+
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+export default {
+  components: {
+    RouterView,
+    Swiper,
+    SwiperSlide
+  },
+  mounted() {
+    this.axios
+      .get('https://vue3-course-api.hexschool.io/v2/api/yu-t-200053/products/all')
+      .then((res) => {
+        console.log(res.data);
+      });
+  },
+  data() {
+    return {
+      modules: [Navigation, Pagination]
+    };
+  }
+};
+</script>
 
 <style>
 .swiper {

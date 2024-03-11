@@ -1,0 +1,88 @@
+// google fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Serif+TC:wght@400;700&display=swap');
+
+$chinese: 'Noto Serif TC';
+$english: 'Inter';
+
+body {
+    font-family: $chinese , $english, serif;
+    background-color: $light-green;
+}
+
+.english {
+    font-family: $english, serif;
+    color: $primary;
+    font-weight: 400;
+}
+
+.title {
+    letter-spacing: 5px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.ls-2 {
+    letter-spacing: 2px;
+}
+
+.ls-5 {
+    letter-spacing: 5px;
+}
+
+// img
+.img-box {
+    overflow: hidden;
+}
+
+// ul
+ul {
+    @include list-unstyled;
+}
+
+// read more
+.read-more {
+    position: relative;
+    @include zoom(.2s);
+
+    &-icon {
+        position: absolute;
+        transform: translate(0, 0);
+        top: 0;
+        left: 100;
+        height: 16px;
+        text-align: center;
+        line-height: 16px;
+        @include zoom(.2s);
+    }
+
+    &:hover .read-more-icon {
+        transform: scale(1.5);
+        color: $dark-green;
+    }
+}
+
+// read all
+.read-all {
+    position: relative;
+    @include zoom(.2s);
+
+    &-icon {
+        position: absolute;
+        transform: translate(0, 0);
+        top: 50px;
+        left: 100;
+        height: 34px;
+        text-align: center;
+        line-height: 34px;
+        @include zoom(.2s);
+    }
+
+    &:hover {
+        background-color: rgba($color: $light-green, $alpha: .5);
+
+        .read-all-icon {
+            transform: scale(1.2);
+            color: $dark-green;
+        }
+    }
+}
