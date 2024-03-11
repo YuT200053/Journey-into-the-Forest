@@ -135,19 +135,8 @@
     <section class="journey pb-7 bg-secondary">
       <!-- 跑馬燈 -->
       <div class="journey-text">
-        <!-- <div class="swiper journey-swiper fs-1 py-3 ls-5" data-aos="fade-up">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              在山林之中深呼吸．Take a deep breath in the forest．在山林之中深呼吸．
-            </div>
-            <div class="swiper-slide">
-              Take a deep breath in the forest．在山林之中深呼吸．Take a deep breath in the forest．
-            </div>
-          </div>
-        </div> -->
-        <!-- 123 -->
         <swiper
-          :slidesPerView="auto"
+          :slidesPerView="'auto'"
           :allowTouchMove="false"
           :spaceBetween="0"
           :speed="80000"
@@ -363,56 +352,71 @@
         </div>
       </div>
       <!-- area-swiper -->
-      <div class="swiper area-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <a href="#" class="swiper-slide-link">
-              <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
-              <!-- border border-white rounded-pill -->
-              <p class="fs-7 px-3 py-2 text-white mb-0">
-                非假日 08:00-17:00<br />例假日 07:00-17:00
-              </p>
-            </a>
-            <img src="/userHome/home_bg.jpg" alt="阿里山" />
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="swiper-slide-link">
-              <h4 class="fw-bold ls-5 text-white">太平山國家森林遊樂區</h4>
-            </a>
-            <img src="/userHome/home_bg.jpg" alt="太平山" />
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="swiper-slide-link">
-              <h4 class="fw-bold ls-5 text-white">武陵國家森林遊樂區</h4>
-            </a>
-            <img src="/userHome/home_bg.jpg" alt="武陵" />
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="swiper-slide-link">
-              <h4 class="fw-bold ls-5 text-white">內洞國家森林遊樂區</h4>
-            </a>
-            <img src="/userHome/home_bg.jpg" alt="內洞" />
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="swiper-slide-link">
-              <h4 class="fw-bold ls-5 text-white">奧萬大國家森林遊樂區</h4>
-            </a>
-            <img src="/userHome/home_bg.jpg" alt="奧萬大" />
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="swiper-slide-link">
-              <h4 class="fw-bold ls-5 text-white">東眼山國家森林遊樂區</h4>
-            </a>
-            <img src="/userHome/home_bg.jpg" alt="東眼山" />
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="swiper-slide-link">
-              <h4 class="fw-bold ls-5 text-white">大雪山國家森林遊樂區</h4>
-            </a>
-            <img src="/userHome/home_bg.jpg" alt="大雪山" />
-          </div>
-        </div>
-      </div>
+      <swiper
+        :slidesPerView="'auto'"
+        :centeredSlides="true"
+        :spaceBetween="30"
+        :grabCursor="true"
+        :modules="modules"
+        class="area-swiper"
+      >
+        <swiper-slide>
+          <a href="#" class="swiper-slide-link">
+            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
+            <!-- border border-white rounded-pill -->
+            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+          </a>
+          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+        </swiper-slide>
+        <swiper-slide>
+          <a href="#" class="swiper-slide-link">
+            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
+            <!-- border border-white rounded-pill -->
+            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+          </a>
+          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+        </swiper-slide>
+        <swiper-slide>
+          <a href="#" class="swiper-slide-link">
+            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
+            <!-- border border-white rounded-pill -->
+            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+          </a>
+          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+        </swiper-slide>
+        <swiper-slide>
+          <a href="#" class="swiper-slide-link">
+            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
+            <!-- border border-white rounded-pill -->
+            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+          </a>
+          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+        </swiper-slide>
+        <swiper-slide>
+          <a href="#" class="swiper-slide-link">
+            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
+            <!-- border border-white rounded-pill -->
+            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+          </a>
+          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+        </swiper-slide>
+        <swiper-slide>
+          <a href="#" class="swiper-slide-link">
+            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
+            <!-- border border-white rounded-pill -->
+            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+          </a>
+          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+        </swiper-slide>
+        <swiper-slide>
+          <a href="#" class="swiper-slide-link">
+            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
+            <!-- border border-white rounded-pill -->
+            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+          </a>
+          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+        </swiper-slide>
+      </swiper>
       <!-- 更多森林 -->
       <div class="container my-5">
         <a
