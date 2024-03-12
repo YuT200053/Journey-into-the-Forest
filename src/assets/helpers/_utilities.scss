@@ -135,7 +135,8 @@ $utilities: map-merge(( // scss-docs-start utils-vertical-align
       // scss-docs-end utils-borders
       // Sizing utilities
       // scss-docs-start utils-sizing
-      "width": (property: width,
+      "width": (responsive: true, // customization
+        property: width,
         class: w,
         values: (25: 25%,
           50: 50%,

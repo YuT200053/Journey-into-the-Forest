@@ -11,6 +11,24 @@
         <h1 class="title mb-0">{{ product.title }}</h1>
       </div>
       <!-- category -->
+      <div class="text-center mb-5">
+        <a
+          href="#"
+          class="badge rounded-pill btn btn-primary text-white me-1"
+          v-for="(category, index) in product.category ? product.category.split(',') : []"
+          :key="'category' + index"
+        >
+          {{ `#${category}` }}
+        </a>
+      </div>
+      <!-- description -->
+      <div class="product-description p-5 w-100 w-md-50 mx-auto">
+        <div>
+          <h3 class="title mb-0">行程亮點</h3>
+          <span class="english fs-5 title">Features</span>
+        </div>
+        <div class="mt-4 text-muted ls-2">{{ product.description }}</div>
+      </div>
     </div>
   </section>
 </template>

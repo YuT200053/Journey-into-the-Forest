@@ -17,3 +17,21 @@
         }
     }
 }
+
+.product-description {
+    position: relative;
+    z-index: 0;
+    background-color: rgba($color: #fff, $alpha: .5);
+
+    @include outline(30px, 5px);
+
+    &::before {
+        content: "";
+        @include outline-top(30px, -1);
+    }
+
+    &::after {
+        content: "";
+        @include outline-bottom(30px, -1);
+    }
+}
