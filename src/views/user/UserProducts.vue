@@ -17,20 +17,20 @@
         <div class="col-12 col-xl-6" v-for="product in products" :key="product.id">
           <div class="card mb-3">
             <div class="row g-0">
-              <a href="#" class="col-md-6 img-box">
+              <router-link :to="`/products/${product.id}`" class="col-md-6 img-box">
                 <img
                   :src="product.imageUrl"
                   class="img-fluid rounded-start h-100 w-100 object-fit-cover"
                   :alt="product.title"
                 />
-              </a>
+              </router-link>
               <div class="col-md-6">
                 <div class="card-body d-flex flex-column h-100">
-                  <a href="#">
+                  <router-link :to="`/products/${product.id}`">
                     <h4 class="card-title fw-bold mb-0 link-dark-green bg-light-green">
                       {{ product.title }}
                     </h4>
-                  </a>
+                  </router-link>
                   <div class="card-tags p-3">
                     <a
                       href="#"
@@ -52,10 +52,13 @@
                     </div>
                     <div>
                       <div class="text-end">
-                        <a href="#" class="read-more english link-primary me-4">
+                        <router-link
+                          :to="`/products/${product.id}`"
+                          class="read-more english link-primary me-4"
+                        >
                           <span class="pe-2">Read More </span>
                           <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-                        </a>
+                        </router-link>
                       </div>
                     </div>
                   </div>
