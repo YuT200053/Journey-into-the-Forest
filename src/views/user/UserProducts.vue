@@ -32,17 +32,13 @@
                     </h4>
                   </a>
                   <div class="card-tags p-3">
-                    <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                      #宜蘭
-                    </a>
-                    <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                      #自然步道
-                    </a>
-                    <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                      #森林鐵路
-                    </a>
-                    <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                      #一日遊
+                    <a
+                      href="#"
+                      class="badge rounded-pill btn btn-primary text-white me-1"
+                      v-for="(category, index) in product.category.split(',').slice(0, 4)"
+                      :key="'category' + index"
+                    >
+                      {{ `#${category}` }}
                     </a>
                   </div>
                   <p class="card-text fw-normal link-gray px-3">
@@ -90,7 +86,10 @@
           >
             <a class="page-link" href="#" @click.prevent="getProducts(item)">{{ item }}</a>
           </li>
-          <li class="page-item">
+          <li
+            class="page-item"
+            :class="{ disabled: pagination.current_page === pagination.total_pages }"
+          >
             <a
               class="page-link"
               href="#"
