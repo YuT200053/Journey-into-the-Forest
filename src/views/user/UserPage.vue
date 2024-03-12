@@ -55,10 +55,10 @@
   <footer class="footer bg-secondary">
     <!-- subscription -->
     <div
-      class="bg-light-green border-1 border-top p-5 p-lg-6 d-flex justify-content-between flex-column flex-xl-row"
+      class="bg-light-green border-1 border-top p-4 p-lg-6 d-flex justify-content-between flex-column flex-xl-row"
     >
       <!-- logo -->
-      <img src="/logo/logo.png" alt="漫途森旅" class="footer-logo mb-5 mb-xl-0" />
+      <img src="/logo/logo.png" alt="漫途森旅" class="footer-logo mb-4 mb-xl-0" />
       <div class="text-start text-xl-end d-flex flex-column justify-content-between flex-shirk-1">
         <!-- slogan -->
         <div class="mb-3">
@@ -90,15 +90,15 @@
     </div>
     <!-- footer list -->
     <ul
-      class="d-flex align-items-center mb-2 mb-lg-0 px-5 px-lg-6 py-3 text-center border-top border-bottom border-1"
+      class="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center mb-2 mb-lg-0 px-4 px-lg-6 py-3 text-center border-top border-bottom border-1"
     >
-      <li class="border-end border-1 pe-4 py-2">
+      <li class="border-end-md border-1 px-4 pe-md-4 ps-md-0 py-2">
         <a class="link-gray" href="#">最新消息</a>
       </li>
-      <li class="border-end border-1 px-4 py-2">
+      <li class="border-end-md border-1 px-4 py-2">
         <router-link to="/products" class="link-gray">漫遊行程</router-link>
       </li>
-      <li class="border-end border-1 px-4 py-2">
+      <li class="border-end-md border-1 px-4 py-2">
         <a class="link-gray" href="#">所有地點</a>
       </li>
       <li class="px-4 py-2">
@@ -110,8 +110,9 @@
         </router-link>
       </li>
     </ul>
-    <div class="px-5 px-lg-6 py-6">
-      <div class="fs-4 mb-3">
+    <!-- social & admin -->
+    <div class="px-4 px-lg-6 py-6">
+      <div class="d-flex justify-content-center justify-content-md-start fs-4 mb-3">
         <a href="#" class="link-dark-green footer-icon">
           <i class="bi bi-facebook"></i>
         </a>
@@ -122,8 +123,10 @@
           <i class="bi bi-envelope"></i>
         </a>
       </div>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="english fs-6 text-gray">Copyright © 漫途森旅 All Rights Reserved.</div>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="english fs-6 text-gray mb-3 mb-md-0">
+          Copyright © 漫途森旅 All Rights Reserved.
+        </div>
         <button type="button" class="btn btn-dark-green text-white" href="#">
           <i class="bi bi-laptop"></i> 登入後台
         </button>

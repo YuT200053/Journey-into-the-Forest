@@ -1,0 +1,19 @@
+.product-banner {
+    // position: relative;
+    // z-index: 0;
+
+    &-bg {
+        position: relative;
+        z-index: 0;
+        height: 400px;
+        background-size: cover;
+        background-position: center center;
+
+        // banner 漸層
+        &::before {
+            content: '';
+            top: 400px;
+            @include image-linear($light-green, top, 0, -100%);
+        }
+    }
+}

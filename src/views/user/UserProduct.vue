@@ -1,5 +1,18 @@
 <template>
-  <div>單一產品頁面</div>
+  <!-- banner  -->
+  <section class="product-banner img-box">
+    <div
+      class="product-banner-bg"
+      :style="{ 'background-image': 'url(' + product.imageUrl + ')' }"
+    ></div>
+    <div class="container">
+      <!-- title -->
+      <div class="product-banner-title text-center w-100 py-4">
+        <h1 class="title mb-0">{{ product.title }}</h1>
+      </div>
+      <!-- category -->
+    </div>
+  </section>
 </template>
 
 <script>
