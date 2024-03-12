@@ -1,11 +1,12 @@
-.banner {
+.products-banner {
     position: relative;
+    z-index: 0;
 
     // banner 漸層
     &::before {
         content: '';
         top: 400px;
-        @include image-linear($light-green, top, 0, -100%);
+        @include image-linear($secondary, top, 0, -100%);
     }
 
     // banner 背景圖
@@ -24,12 +25,12 @@
     &-title {
         max-width: 500px;
         height: auto;
-        margin: 350px auto 0px;
+        margin: 450px auto 0px;
         z-index: 3;
     }
 }
 
-.journey {
+.products-journey {
     .card {
         padding: 1px;
         position: relative;
