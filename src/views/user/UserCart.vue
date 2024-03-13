@@ -1,7 +1,18 @@
 <template>
   <section class="container cart">
     <h2 class="text-center fw-bold">前台購物車</h2>
-    {{ carts.carts[0] }}
+    <VeeForm v-slot="{ errors }" @submit="onSubmit">
+      <VeeField
+        id="email"
+        name="email"
+        type="email"
+        class="form-control"
+        :class="{ 'is-invalid': errors['email'] }"
+        placeholder="請輸入 Email"
+        rules="email|required"
+      ></VeeField>
+      <error-message name="email" class="invalid-feedback"></error-message>
+    </VeeForm>
   </section>
 </template>
 
