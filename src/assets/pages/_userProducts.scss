@@ -63,6 +63,15 @@
                 margin-top: 0px;
                 padding-top: 24px;
             }
+
+            // 要再包一層，不然會因為 padding 跑第二行出來
+            span {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
 
         &-text {
@@ -79,7 +88,7 @@
             }
 
             @include lg() {
-                -webkit-line-clamp: 5;
+                -webkit-line-clamp: 4;
             }
         }
 

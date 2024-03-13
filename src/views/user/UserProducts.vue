@@ -28,14 +28,14 @@
                 <div class="card-body d-flex flex-column h-100">
                   <router-link :to="`/products/${product.id}`">
                     <h4 class="card-title fw-bold mb-0 link-dark-green bg-light-green">
-                      {{ product.title }}
+                      <span>{{ product.title }}</span>
                     </h4>
                   </router-link>
                   <div class="card-tags p-3">
                     <a
                       href="#"
                       class="badge rounded-pill btn btn-primary text-white me-1"
-                      v-for="(category, index) in product.category.split(',').slice(0, 4)"
+                      v-for="(category, index) in product.category.split(',').slice(0, 3)"
                       :key="'category' + index"
                     >
                       {{ `#${category}` }}

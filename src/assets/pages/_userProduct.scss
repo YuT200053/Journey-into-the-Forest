@@ -35,3 +35,35 @@
         @include outline-bottom(30px, -1);
     }
 }
+
+.product-content {
+    &-day {
+        width: 170px;
+        display: flex;
+        align-items: center;
+        background-color: $primary;
+        @include zoom(.2s);
+
+        h5 {
+            line-height: 100%;
+        }
+    }
+
+    &-schedule:hover .product-content-day {
+        background: rgba($color: $dark-green, $alpha: .75);
+    }
+
+    &-time {
+        @include zoom(.2s);
+    }
+
+    &-schedule:hover .product-content-time {
+        background: rgba($color: $white, $alpha: .5);
+    }
+}
+
+.product-add-cart {
+    .sticky-top {
+        top: 100px;
+    }
+}
