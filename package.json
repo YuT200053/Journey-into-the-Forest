@@ -20,6 +20,7 @@
     "swiper": "^11.0.7",
     "vue": "^3.4.21",
     "vue-axios": "^3.5.2",
+    "vue-loading-overlay": "6.0",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
