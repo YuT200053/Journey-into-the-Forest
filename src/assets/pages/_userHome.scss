@@ -352,24 +352,3 @@
         }
     }
 }
-
-.footer {
-    &-logo {
-        width: 450px;
-        max-width: 50%;
-    }
-
-    &-icon {
-        .bi::before {
-            @include zoom(.2s);
-        }
-
-        &:hover .bi::before {
-            transform: scale(1.2);
-        }
-    }
-
-    .input-group {
-        max-width: 500px;
-    }
-}

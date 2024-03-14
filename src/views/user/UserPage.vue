@@ -42,6 +42,7 @@
             <li class="nav-item px-3 py-2 py-lg-0">
               <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3">
                 <i class="bi bi-bag me-1"></i>查看購物車
+                <span class="badge bg-danger rounded-pill"> {{ carts.carts.length }}</span>
               </RouterLink>
             </li>
           </ul>
@@ -107,6 +108,7 @@
       <li class="py-2 py-lg-0">
         <router-link to="/cart" class="btn btn-primary text-white ms-lg-3 h-100">
           <i class="bi bi-bag me-1"></i>查看購物車
+          <span class="badge bg-danger rounded-pill"> {{ carts.carts.length }}</span>
         </router-link>
       </li>
     </ul>
@@ -135,6 +137,30 @@
   </footer>
 </template>
 
-<script></script>
+<script>
+const { VITE_URL, VITE_PATH } = import.meta.env;
 
-<style></style>
+export default {
+  data() {
+    return {
+      carts: {}
+    };
+  },
+  methods: {
+    getCart() {
+      const api = `${VITE_URL}/api/${VITE_PATH}/cart`;
+      this.axios
+        .get(api)
+        .then((res) => {
+          this.carts = res.data.data;
+        })
+        .catch((err) => {
+          alert(err.response.data.message);
+        });
+    }
+  },
+  mounted() {
+    this.getCart();
+  }
+};
+</script>

@@ -11,7 +11,16 @@
         }
     }
 
+    .btn {
+        position: relative;
 
+        .badge {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 0;
+            right: -16px;
+        }
+    }
 }
 
 .dropdown-menu {
