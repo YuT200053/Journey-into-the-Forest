@@ -119,10 +119,10 @@
     <!-- social & admin -->
     <div class="px-4 px-lg-6 py-6">
       <div class="d-flex justify-content-center justify-content-md-start fs-4 mb-3">
-        <a href="facebook.com" class="link-dark-green footer-icon">
+        <a href="https://www.facebook.com/" class="link-dark-green footer-icon">
           <i class="bi bi-facebook"></i>
         </a>
-        <a href="instagram.com" class="link-dark-green footer-icon">
+        <a href="https://www.instagram.com/" class="link-dark-green footer-icon">
           <i class="bi bi-instagram mx-4"></i>
         </a>
         <a href="mailto:journey-into-the-forest@gmail.com" class="link-dark-green footer-icon">
