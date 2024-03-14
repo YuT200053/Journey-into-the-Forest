@@ -119,13 +119,13 @@
     <!-- social & admin -->
     <div class="px-4 px-lg-6 py-6">
       <div class="d-flex justify-content-center justify-content-md-start fs-4 mb-3">
-        <a href="#" class="link-dark-green footer-icon">
+        <a href="facebook.com" class="link-dark-green footer-icon">
           <i class="bi bi-facebook"></i>
         </a>
-        <a href="#" class="link-dark-green footer-icon">
+        <a href="instagram.com" class="link-dark-green footer-icon">
           <i class="bi bi-instagram mx-4"></i>
         </a>
-        <a href="#" class="link-dark-green footer-icon">
+        <a href="mailto:journey-into-the-forest@gmail.com" class="link-dark-green footer-icon">
           <i class="bi bi-envelope"></i>
         </a>
       </div>
@@ -133,9 +133,9 @@
         <div class="english fs-6 text-gray mb-3 mb-md-0">
           Copyright © 漫途森旅 All Rights Reserved.
         </div>
-        <button type="button" class="btn btn-dark-green text-white" href="#">
+        <router-link to="/login" class="btn btn-dark-green text-white" href="#">
           <i class="bi bi-laptop"></i> 登入後台
-        </button>
+        </router-link>
       </div>
     </div>
   </footer>
