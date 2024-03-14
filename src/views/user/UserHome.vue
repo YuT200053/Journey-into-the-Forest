@@ -312,58 +312,51 @@
         <swiper-slide>
           <a href="#" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
-            <!-- border border-white rounded-pill -->
-            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+            <p class="fs-7 px-3 py-2 text-white mb-0">全年 24 小時開放</p>
           </a>
-          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+          <img src="/userHome/area_阿里山.jpg" alt="阿里山" />
         </swiper-slide>
         <swiper-slide>
           <a href="#" class="swiper-slide-link">
-            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
-            <!-- border border-white rounded-pill -->
-            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+            <h4 class="fw-bold ls-5 text-white">太平山<br />國家森林遊樂區</h4>
+            <p class="fs-7 px-3 py-2 text-white mb-0">平日 06:00-18:00<br />假日 04:00-18:00</p>
           </a>
-          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+          <img src="/userHome/area_太平山.jpg" alt="太平山" />
         </swiper-slide>
         <swiper-slide>
           <a href="#" class="swiper-slide-link">
-            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
-            <!-- border border-white rounded-pill -->
-            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+            <h4 class="fw-bold ls-5 text-white">大雪山<br />國家森林遊樂區</h4>
+            <p class="fs-7 px-3 py-2 text-white mb-0">每日 06:30-17:00</p>
           </a>
-          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+          <img src="/userHome/area_大雪山.jpg" alt="大雪山" />
         </swiper-slide>
         <swiper-slide>
           <a href="#" class="swiper-slide-link">
-            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
-            <!-- border border-white rounded-pill -->
-            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+            <h4 class="fw-bold ls-5 text-white">內洞<br />國家森林遊樂區</h4>
+            <p class="fs-7 px-3 py-2 text-white mb-0">平日 08:00-17:00<br />假日 07:00-17:00</p>
           </a>
-          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+          <img src="/userHome/area_內洞.jpg" alt="內洞" />
         </swiper-slide>
         <swiper-slide>
           <a href="#" class="swiper-slide-link">
-            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
-            <!-- border border-white rounded-pill -->
-            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+            <h4 class="fw-bold ls-5 text-white">東眼山<br />國家森林遊樂區</h4>
+            <p class="fs-7 px-3 py-2 text-white mb-0">平日 08:00-17:00<br />假日 07:00-17:00</p>
           </a>
-          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+          <img src="/userHome/area_東眼山.jpg" alt="東眼山" />
         </swiper-slide>
         <swiper-slide>
           <a href="#" class="swiper-slide-link">
-            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
-            <!-- border border-white rounded-pill -->
-            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+            <h4 class="fw-bold ls-5 text-white">武陵<br />國家森林遊樂區</h4>
+            <p class="fs-7 px-3 py-2 text-white mb-0">全年 24 小時開放<br />配合武陵農場</p>
           </a>
-          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+          <img src="/userHome/area_武陵.jpg" alt="武陵" />
         </swiper-slide>
         <swiper-slide>
           <a href="#" class="swiper-slide-link">
-            <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
-            <!-- border border-white rounded-pill -->
-            <p class="fs-7 px-3 py-2 text-white mb-0">非假日 08:00-17:00<br />例假日 07:00-17:00</p>
+            <h4 class="fw-bold ls-5 text-white">奧萬大<br />國家森林遊樂區</h4>
+            <p class="fs-7 px-3 py-2 text-white mb-0">每天 08:00-17:00</p>
           </a>
-          <img src="/userHome/home_bg.jpg" alt="阿里山" />
+          <img src="/userHome/area_奧萬大.jpg" alt="奧萬大" />
         </swiper-slide>
       </swiper>
       <!-- 更多森林 -->
