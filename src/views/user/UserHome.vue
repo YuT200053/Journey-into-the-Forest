@@ -164,51 +164,54 @@
           <div class="col-12">
             <div class="card mb-3">
               <div class="row g-0">
-                <a href="#" class="col-md-6 img-box">
+                <router-link :to="`/products/${firstProduct.id}`" class="col-md-6 img-box">
                   <img
-                    src="/userHome/test.jpg"
+                    :src="firstProduct.imageUrl"
                     class="img-fluid rounded-start h-100 w-100 object-fit-cover"
-                    alt="太平山"
+                    :alt="firstProduct.title"
                   />
-                </a>
+                </router-link>
                 <div class="col-md-6">
                   <div class="card-body d-flex flex-column h-100">
-                    <a href="#">
+                    <router-link :to="`/products/${firstProduct.id}`">
                       <!-- px-3 py-4 -->
                       <h4 class="card-title fw-bold mb-0 link-dark-green bg-light-green">
-                        太平山│林鐵追憶一日遊
+                        {{ firstProduct.title }}
                       </h4>
-                    </a>
+                    </router-link>
                     <div class="card-tags p-3">
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #宜蘭
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #自然步道
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #森林鐵路
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #一日遊
+                      <a
+                        href="#"
+                        class="badge rounded-pill btn btn-primary text-white me-1"
+                        v-for="(category, index) in firstProduct.category
+                          ? firstProduct.category.split(',')
+                          : []"
+                        :key="'category' + index"
+                      >
+                        {{ `#${category}` }}
                       </a>
                     </div>
                     <p class="card-text fw-normal link-gray px-3">
-                      漫步於見晴懷古步道，於寧靜山林之中探索太平山林鐵遺跡，而後搭乘太平山蹦蹦車，穿梭於巨木參天的林蔭之中，欣賞沿途山巒疊翠，最終抵達茂興懷舊步道，蜿蜒行走於國寶貴重木樹林之中，見證太平山林業盛產的歲月。
+                      {{ firstProduct.description }}
                     </p>
                     <div
                       class="d-flex justify-content-between align-items-end px-3 pb-4 flex-grow-1"
                     >
                       <div>
-                        <del class="text-gray fs-7 fw-normal">NT$ 999 /位</del><br />
-                        <span class="text-danger fs-5">NT$ 800 /位</span>
+                        <del class="text-gray fs-7 fw-normal"
+                          >NT$ {{ firstProduct.origin_price }} /位</del
+                        ><br />
+                        <span class="text-danger fs-5">NT$ {{ firstProduct.price }} /位</span>
                       </div>
                       <div>
                         <div class="text-end">
-                          <a href="#" class="read-more english link-primary me-4">
+                          <router-link
+                            :to="`/products/${firstProduct.id}`"
+                            class="read-more english link-primary me-4"
+                          >
                             <span class="pe-2">Read More </span>
                             <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-                          </a>
+                          </router-link>
                         </div>
                       </div>
                     </div>
@@ -217,110 +220,56 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-xl-6">
+          <div class="col-12 col-xl-6" v-for="product in products" :key="product.id">
             <div class="card mb-3">
               <div class="row g-0">
-                <a href="#" class="col-md-6 img-box">
+                <router-link :to="`/products/${product.id}`" class="col-md-6 img-box">
                   <img
-                    src="/userHome/test.jpg"
+                    :src="product.imageUrl"
                     class="img-fluid rounded-start h-100 w-100 object-fit-cover"
-                    alt="太平山"
+                    :alt="product.title"
                   />
-                </a>
+                </router-link>
                 <div class="col-md-6">
                   <div class="card-body d-flex flex-column h-100">
-                    <a href="#">
-                      <!-- px-3 py-4 -->
+                    <router-link :to="`/products/${product.id}`">
                       <h4 class="card-title fw-bold mb-0 link-dark-green bg-light-green">
-                        太平山│林鐵追憶一日遊
+                        {{ product.title }}
                       </h4>
-                    </a>
+                    </router-link>
                     <div class="card-tags p-3">
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #宜蘭
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #自然步道
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #森林鐵路
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #一日遊
+                      <a
+                        href="#"
+                        class="badge rounded-pill btn btn-primary text-white me-1"
+                        v-for="(category, index) in product.category
+                          ? product.category.split(',').slice(0, 3)
+                          : []"
+                        :key="'category' + index"
+                      >
+                        {{ `#${category}` }}
                       </a>
                     </div>
                     <p class="card-text fw-normal link-gray px-3">
-                      漫步於見晴懷古步道，於寧靜山林之中探索太平山林鐵遺跡，而後搭乘太平山蹦蹦車，穿梭於巨木參天的林蔭之中，欣賞沿途山巒疊翠，最終抵達茂興懷舊步道，蜿蜒行走於國寶貴重木樹林之中，見證太平山林業盛產的歲月。
+                      {{ product.description }}
                     </p>
                     <div
                       class="d-flex justify-content-between align-items-end px-3 pb-4 flex-grow-1"
                     >
                       <div>
-                        <del class="text-gray fs-7 fw-normal">NT$ 999 /位</del><br />
-                        <span class="text-danger fs-5">NT$ 800 /位</span>
+                        <del class="text-gray fs-7 fw-normal"
+                          >NT$ {{ product.origin_price }} /位</del
+                        ><br />
+                        <span class="text-danger fs-5">NT$ {{ product.price }} /位</span>
                       </div>
                       <div>
                         <div class="text-end">
-                          <a href="#" class="read-more english link-primary me-4">
+                          <router-link
+                            :to="`/products/${product.id}`"
+                            class="read-more english link-primary me-4"
+                          >
                             <span class="pe-2">Read More </span>
                             <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-xl-6">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <a href="#" class="col-md-6 img-box">
-                  <img
-                    src="/userHome/test.jpg"
-                    class="img-fluid rounded-start h-100 w-100 object-fit-cover"
-                    alt="太平山"
-                  />
-                </a>
-                <div class="col-md-6">
-                  <div class="card-body d-flex flex-column h-100">
-                    <a href="#">
-                      <!-- px-3 py-4 -->
-                      <h4 class="card-title fw-bold mb-0 link-dark-green bg-light-green">
-                        太平山│林鐵追憶一日遊
-                      </h4>
-                    </a>
-                    <div class="card-tags p-3">
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #宜蘭
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #自然步道
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #森林鐵路
-                      </a>
-                      <a href="#" class="badge rounded-pill btn btn-primary text-white me-1">
-                        #一日遊
-                      </a>
-                    </div>
-                    <p class="card-text fw-normal link-gray px-3">
-                      漫步於見晴懷古步道，於寧靜山林之中探索太平山林鐵遺跡，而後搭乘太平山蹦蹦車，穿梭於巨木參天的林蔭之中，欣賞沿途山巒疊翠，最終抵達茂興懷舊步道，蜿蜒行走於國寶貴重木樹林之中，見證太平山林業盛產的歲月。
-                    </p>
-                    <div
-                      class="d-flex justify-content-between align-items-end px-3 pb-4 flex-grow-1"
-                    >
-                      <div>
-                        <del class="text-gray fs-7 fw-normal">NT$ 999 /位</del><br />
-                        <span class="text-danger fs-5">NT$ 800 /位</span>
-                      </div>
-                      <div>
-                        <div class="text-end">
-                          <a href="#" class="read-more english link-primary me-4">
-                            <span class="pe-2">Read More </span>
-                            <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-                          </a>
+                          </router-link>
                         </div>
                       </div>
                     </div>
@@ -438,6 +387,8 @@ import { Autoplay } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 
+const { VITE_URL, VITE_PATH } = import.meta.env;
+
 export default {
   components: {
     Swiper,
@@ -445,8 +396,23 @@ export default {
   },
   data() {
     return {
-      modules: [Autoplay]
+      modules: [Autoplay],
+      firstProduct: {},
+      products: []
     };
+  },
+  mounted() {
+    const api = `${VITE_URL}/api/${VITE_PATH}/products`;
+
+    this.axios
+      .get(api)
+      .then((res) => {
+        this.firstProduct = res.data.products.slice(0, 1)[0];
+        this.products = res.data.products.slice(1, 3);
+      })
+      .catch((err) => {
+        alert(err.Response.data.message);
+      });
   }
 };
 </script>

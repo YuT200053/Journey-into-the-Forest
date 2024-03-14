@@ -42,7 +42,9 @@
             <li class="nav-item px-3 py-2 py-lg-0">
               <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3">
                 <i class="bi bi-bag me-1"></i>查看購物車
-                <span class="badge bg-danger rounded-pill"> {{ carts.carts.length }}</span>
+                <span class="badge bg-danger rounded-pill">
+                  {{ carts.carts ? carts.carts.length : '' }}</span
+                >
               </RouterLink>
             </li>
           </ul>
@@ -108,7 +110,9 @@
       <li class="py-2 py-lg-0">
         <router-link to="/cart" class="btn btn-primary text-white ms-lg-3 h-100">
           <i class="bi bi-bag me-1"></i>查看購物車
-          <span class="badge bg-danger rounded-pill"> {{ carts.carts.length }}</span>
+          <span class="badge bg-danger rounded-pill">
+            {{ carts.carts ? carts.carts.length : '' }}</span
+          >
         </router-link>
       </li>
     </ul>
