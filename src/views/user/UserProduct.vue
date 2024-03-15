@@ -42,7 +42,7 @@
           <div class="mt-4 text-muted ls-2">{{ product.description }}</div>
         </div>
         <!-- content -->
-        <div class="product-content mb-5 mb-lg-0">
+        <div class="product-content mb-7">
           <div class="text-center mb-3">
             <h3 class="title mb-0">每日行程</h3>
             <span class="english fs-5 title">Schedules</span>
@@ -63,6 +63,33 @@
               </div>
             </div>
           </div>
+        </div>
+        <!-- notices -->
+        <div class="product-content mb-5 mb-lg-0">
+          <div class="text-start mb-1">
+            <h5 class="title mb-0">注意事項</h5>
+            <span class="english fs-7 title">Notices</span>
+          </div>
+          <ol class="fs-7 text-muted fw-normal">
+            <li>
+              此票券優惠效期為購買日起 6 個月
+              (到期日將顯示於您的電子票券上)，逾優惠效期使用此票券則依票面金額現場折抵其他專案行程，且恕不找零；若金額不足則需現場補足差額。
+            </li>
+            <li>此票券以為折扣後之優惠價，恕不得與現場其他優惠活動合併使用。</li>
+            <li>
+              如遇特殊節日，需依票面金額補足與現場定價差價後方可使用。特殊節日定義為：除夕、春節期間、清明兒童連假、母親節、端午連假、聖誕節及其他公告之特定活動日期
+              (各節日定義依人事行政局公佈之日期為準)。
+            </li>
+            <li>
+              此票券為套裝行程，請注意各景點、餐廳、旅館等地點的營業時間與開放時間，以免因時間不足而不法使用或錯過行程。
+            </li>
+            <li>此票券下單付款時已開立發票，使用當日則不再開立發票。</li>
+            <li>
+              使用此票券前，需事先致電至該國家森林遊樂區告知使用日期與人數，人數至少 2
+              人以上，若人數不足，該國家森林遊樂區有權安排與其他使用票券者安排同房住宿。
+            </li>
+            <li>此票券售出後恕不能退換，請務必確認專案內容與注意事項後再進行購買。</li>
+          </ol>
         </div>
       </div>
       <!-- add-cart -->
