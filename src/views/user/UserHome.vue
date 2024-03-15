@@ -199,9 +199,19 @@
                     >
                       <div>
                         <del class="text-gray fs-7 fw-normal"
-                          >NT$ {{ firstProduct.origin_price }} /位</del
+                          >NT$
+                          {{
+                            firstProduct.origin_price
+                              ? firstProduct.origin_price.toLocaleString('en-US')
+                              : ''
+                          }}
+                          /位</del
                         ><br />
-                        <span class="text-danger fs-5">NT$ {{ firstProduct.price }} /位</span>
+                        <span class="text-danger fs-5"
+                          >NT$
+                          {{ firstProduct.price ? firstProduct.price.toLocaleString('en-US') : '' }}
+                          /位</span
+                        >
                       </div>
                       <div>
                         <div class="text-end">
@@ -257,9 +267,16 @@
                     >
                       <div>
                         <del class="text-gray fs-7 fw-normal"
-                          >NT$ {{ product.origin_price }} /位</del
+                          >NT$
+                          {{
+                            product.origin_price ? product.origin_price.toLocaleString('en-US') : ''
+                          }}
+                          /位</del
                         ><br />
-                        <span class="text-danger fs-5">NT$ {{ product.price }} /位</span>
+                        <span class="text-danger fs-5"
+                          >NT$
+                          {{ product.price ? product.price.toLocaleString('en-US') : '' }} /位</span
+                        >
                       </div>
                       <div>
                         <div class="text-end">
