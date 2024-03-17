@@ -11,104 +11,33 @@
     </div>
   </section>
   <!-- accommodations card -->
-  <section class="accommodations-card container">
+  <section class="accommodations-card container mb-7">
     <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card">
-          <a href="#">
+      <div
+        class="col-12 col-md-6 col-lg-4 col-xl-3"
+        v-for="place in accommodations"
+        :key="place.id"
+      >
+        <div class="card h-100">
+          <a :href="place.url">
             <div class="img-box">
-              <img src="/userAccommodations/八仙山莊.jpg" class="card-img-top w-100" alt="..." />
+              <img :src="place.image" class="card-img-top w-100 h-100" :alt="place.name" />
             </div>
             <div class="card-body">
-              <h5 class="card-title bg-primary text-white title">武陵山莊</h5>
+              <h5 class="card-title bg-primary text-white title">{{ place.name }}</h5>
             </div></a
           >
           <ul class="list-group list-group-flush fs-7">
             <li class="list-group-item english">
-              <a href="tel:04-2590-1288">
-                <i class="bi bi-telephone-fill"></i> 04-2590-1288, 04-2590-1020
+              <a :href="`tel:${place.phone}`">
+                <i class="bi bi-telephone-fill"></i> {{ place.phone }}
               </a>
             </li>
-            <li class="list-group-item text-muted">
-              <i class="bi bi-house-fill"></i> 台中市和平區武陵路 3 號
-            </li>
             <li class="list-group-item">
-              <a href="#"> <i class="bi bi-geo-alt-fill"></i> 武陵國家森林遊樂區 </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card">
-          <a href="#">
-            <div class="img-box">
-              <img src="/userAccommodations/八仙山莊.jpg" class="card-img-top w-100" alt="..." />
-            </div>
-            <div class="card-body">
-              <h5 class="card-title bg-primary text-white title">武陵山莊</h5>
-            </div></a
-          >
-          <ul class="list-group list-group-flush fs-7">
-            <li class="list-group-item english">
-              <a href="tel:04-2590-1288">
-                <i class="bi bi-telephone-fill"></i> 04-2590-1288, 04-2590-1020
-              </a>
+              <a href="#"> <i class="bi bi-geo-alt-fill"></i> {{ place.area }} </a>
             </li>
             <li class="list-group-item text-muted">
-              <i class="bi bi-house-fill"></i> 台中市和平區武陵路 3 號
-            </li>
-            <li class="list-group-item">
-              <a href="#"> <i class="bi bi-geo-alt-fill"></i> 武陵國家森林遊樂區 </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card">
-          <a href="#">
-            <div class="img-box">
-              <img src="/userAccommodations/八仙山莊.jpg" class="card-img-top w-100" alt="..." />
-            </div>
-            <div class="card-body">
-              <h5 class="card-title bg-primary text-white title">武陵山莊</h5>
-            </div></a
-          >
-          <ul class="list-group list-group-flush fs-7">
-            <li class="list-group-item english">
-              <a href="tel:04-2590-1288">
-                <i class="bi bi-telephone-fill"></i> 04-2590-1288, 04-2590-1020
-              </a>
-            </li>
-            <li class="list-group-item text-muted">
-              <i class="bi bi-house-fill"></i> 台中市和平區武陵路 3 號
-            </li>
-            <li class="list-group-item">
-              <a href="#"> <i class="bi bi-geo-alt-fill"></i> 武陵國家森林遊樂區 </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card">
-          <a href="#">
-            <div class="img-box">
-              <img src="/userAccommodations/八仙山莊.jpg" class="card-img-top w-100" alt="..." />
-            </div>
-            <div class="card-body">
-              <h5 class="card-title bg-primary text-white title">武陵山莊</h5>
-            </div></a
-          >
-          <ul class="list-group list-group-flush fs-7">
-            <li class="list-group-item english">
-              <a href="tel:04-2590-1288">
-                <i class="bi bi-telephone-fill"></i> 04-2590-1288, 04-2590-1020
-              </a>
-            </li>
-            <li class="list-group-item text-muted">
-              <i class="bi bi-house-fill"></i> 台中市和平區武陵路 3 號
-            </li>
-            <li class="list-group-item">
-              <a href="#"> <i class="bi bi-geo-alt-fill"></i> 武陵國家森林遊樂區 </a>
+              <i class="bi bi-house-fill"></i> {{ place.address }}
             </li>
           </ul>
         </div>
@@ -116,3 +45,23 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      accommodations: []
+    };
+  },
+  mounted() {
+    this.axios
+      .get('public/userAccommodations/userAccommodations.json')
+      .then((res) => {
+        this.accommodations = res.data;
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
+  }
+};
+</script>
