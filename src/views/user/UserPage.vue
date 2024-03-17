@@ -31,21 +31,21 @@
               <a class="nav-link" href="#">最新消息</a>
             </li>
             <li class="nav-item px-3 border-end-lg border-1 py-2">
-              <RouterLink to="/products" class="nav-link">漫遊行程</RouterLink>
+              <router-link to="/products" class="nav-link">漫遊行程</router-link>
             </li>
             <li class="nav-item px-3 border-end-lg border-1 py-2">
               <a class="nav-link" href="#">所有地點</a>
             </li>
             <li class="nav-item px-3 py-2">
-              <a class="nav-link" href="#">園內住宿</a>
+              <router-link to="/accommodations" class="nav-link">園內住宿</router-link>
             </li>
             <li class="nav-item px-3 py-2 py-lg-0">
-              <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3">
+              <router-link to="/cart" class="btn btn-primary text-white ms-lg-3">
                 <i class="bi bi-bag me-1"></i>查看購物車
                 <span class="badge bg-danger rounded-pill">
                   {{ carts.carts ? carts.carts.length : '' }}</span
                 >
-              </RouterLink>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -105,7 +105,7 @@
         <a class="link-gray" href="#">所有地點</a>
       </li>
       <li class="px-4 py-2">
-        <a class="link-gray" href="#">園內住宿</a>
+        <router-link to="/accommodations" class="link-gray">園內住宿</router-link>
       </li>
       <li class="py-2 py-lg-0">
         <router-link to="/cart" class="btn btn-primary text-white ms-lg-3 h-100">
