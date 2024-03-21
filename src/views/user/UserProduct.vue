@@ -1,16 +1,15 @@
 <template>
-  <!-- banner  -->
+  <VueLoading :active="isLoading" />
   <section class="product-banner img-box">
     <div
       class="product-banner-bg"
       :style="{ 'background-image': 'url(' + product.imageUrl + ')' }"
     ></div>
     <div class="container">
-      <!-- title -->
       <div class="product-banner-title text-center w-100 py-4">
         <h1 class="title mb-0">{{ product.title }}</h1>
       </div>
-      <!-- category -->
+
       <div class="text-center mb-3">
         <a
           href="#"
@@ -21,7 +20,7 @@
           {{ `#${category}` }}
         </a>
       </div>
-      <!-- area -->
+
       <div class="text-center mb-5 fs-5">
         <a href="#" class="link-dark-green">
           <i class="bi bi-geo-alt-fill me-1"></i>{{ product.unit }}
@@ -29,11 +28,10 @@
       </div>
     </div>
   </section>
-  <!-- product-detail -->
+
   <section class="container pb-5">
     <div class="row">
       <div class="col-12 col-lg-7">
-        <!-- description -->
         <div class="product-description p-5 mx-auto mb-5">
           <div>
             <h3 class="title mb-0">行程亮點</h3>
@@ -41,7 +39,7 @@
           </div>
           <div class="mt-4 text-muted ls-2">{{ product.description }}</div>
         </div>
-        <!-- content -->
+
         <div class="product-content mb-7">
           <div class="text-center mb-3">
             <h3 class="title mb-0">每日行程</h3>
@@ -64,7 +62,7 @@
             </div>
           </div>
         </div>
-        <!-- notices -->
+
         <div class="product-content mb-5 mb-lg-0">
           <div class="text-start mb-1">
             <h5 class="title mb-0">注意事項</h5>
@@ -92,7 +90,7 @@
           </ol>
         </div>
       </div>
-      <!-- add-cart -->
+
       <div class="col-12 col-lg-5 product-add-cart">
         <div class="sticky-top">
           <div class="product-description p-5 mx-auto mb-6">
@@ -117,6 +115,7 @@
             <button
               type="submit"
               class="btn btn-primary text-white w-100"
+              :class="{ disabled: isLoading }"
               @click.prevent="addCart(product.id, qty)"
             >
               <i class="bi bi-bag me-1"></i>加入購物車
@@ -130,25 +129,41 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
+import Swal from 'sweetalert2';
+const success = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  background: '#f4f9f3',
+  color: '#505843',
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
 
 export default {
   data() {
     return {
       product: {},
-      qty: 1
+      qty: 1,
+      isLoading: false
     };
   },
   methods: {
     addCart(product_id, qty = 1) {
       const order = { product_id, qty };
-      console.log(order);
       const api = `${VITE_URL}/api/${VITE_PATH}/cart`;
 
       this.axios
         .post(api, { data: order })
-        .then((res) => {
-          alert(res.data.message);
-          console.log(order);
+        .then(() => {
+          success.fire({
+            icon: 'success',
+            title: '已加入購物車！'
+          });
         })
         .catch((err) => {
           alert(err.response.data.message);
@@ -158,12 +173,13 @@ export default {
   mounted() {
     const { id } = this.$route.params;
     const api = `${VITE_URL}/api/${VITE_PATH}/product/${id}`;
+    this.isLoading = true;
 
     this.axios
       .get(api)
       .then((res) => {
         this.product = res.data.product;
-        console.log(this.product);
+        this.isLoading = false;
       })
       .catch((err) => {
         alert(err.Response.data.message);

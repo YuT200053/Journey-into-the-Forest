@@ -7,7 +7,7 @@
         建立新產品
       </button>
     </div>
-    <!-- 產品列表 -->
+
     <table class="table align-middle">
       <thead>
         <tr>
@@ -50,21 +50,17 @@
         </tr>
       </tbody>
     </table>
-    <!-- 頁碼 -->
-    <PaginationComponent :pagination="pagination" @get-products="getProducts"></PaginationComponent>
-    <!-- 編輯產品 modal -->
+
+    <PaginationComponent :pagination="pagination" @get-products="getProducts" />
+
     <EditModal
       ref="editModal"
       :temp-product="tempProduct"
       :is-new="isNew"
       @edit-product="editProduct"
-    ></EditModal>
-    <!-- 刪除產品 modal -->
-    <DeleteModal
-      ref="deleteModal"
-      :temp-item="tempProduct"
-      @delete-item="deleteProduct"
-    ></DeleteModal>
+    />
+
+    <DeleteModal ref="deleteModal" :temp-item="tempProduct" @delete-item="deleteProduct" />
   </div>
 </template>
 
@@ -83,7 +79,6 @@ export default {
       pagination: {},
       // 用來判斷是不是要新增產品
       isNew: false,
-      // 暫存資料
       tempProduct: {
         imagesUrl: []
       },
@@ -97,7 +92,6 @@ export default {
     DeleteModal
   },
   methods: {
-    // 預設頁面為 1
     getProducts(page = 1) {
       const api = `${VITE_URL}/api/${VITE_PATH}/admin/products?page=${page}`;
       this.isLoading = true;
@@ -125,12 +119,9 @@ export default {
         };
         // 初始化完成後，可用名稱直接叫
         this.$refs.editModal.openModal();
-
         this.isLoading = false;
       } else if (isNew === 'edit') {
-        // 這邊不是用 === 判斷，而是 = 賦予
         this.isNew = false;
-        // 展開 item 賦予給 tempProduct
         this.tempProduct = { ...item };
         // tempProduct.imagesUrl 要補上空陣列，否則沒有東西會出錯
         this.tempProduct.imagesUrl = this.tempProduct.imagesUrl || [];
@@ -173,7 +164,6 @@ export default {
           this.isLoading = false;
         });
     },
-    // 刪除產品
     deleteProduct() {
       const api = `${VITE_URL}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`;
       this.isLoading = true;

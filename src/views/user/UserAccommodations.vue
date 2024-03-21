@@ -1,8 +1,7 @@
 <template>
-  <!-- banner  -->
+  <VueLoading :active="isLoading" />
   <section class="accommodations-banner img-box">
     <div class="container">
-      <!-- title -->
       <div class="accommodations-banner-title text-center w-100">
         <h1 class="title mb-0">園內住宿</h1>
         <span class="english fs-5 title">Accommodations</span>
@@ -10,7 +9,7 @@
       <p class="text-center ls-2 my-3 fw-normal text-muted">點選以下連結或撥打聯絡電話聯繫訂房</p>
     </div>
   </section>
-  <!-- accommodations card -->
+
   <section class="accommodations-card container mb-7">
     <div class="row g-3">
       <div
@@ -50,14 +49,18 @@
 export default {
   data() {
     return {
-      accommodations: []
+      accommodations: [],
+      isLoading: false
     };
   },
   mounted() {
+    this.isLoading = true;
+
     this.axios
       .get('public/userAccommodations/userAccommodations.json')
       .then((res) => {
         this.accommodations = res.data;
+        this.isLoading = false;
       })
       .catch((err) => {
         alert(err.response.data.message);

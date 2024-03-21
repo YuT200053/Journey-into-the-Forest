@@ -1,9 +1,8 @@
 <template>
   <main>
-    <!-- banner & news -->
+    <VueLoading :active="isLoading" />
     <section class="banner img-box mb-6">
       <div class="container">
-        <!-- logo & slogan -->
         <div class="text-center mb-5">
           <img src="/logo/logo.png" alt="漫途森旅" class="object-fit-cover mb-5 banner-logo" />
           <h3 class="fw-bold ls-2">
@@ -13,15 +12,15 @@
           </h3>
           <h5 class="fw-bold">Meander, Explore, Forest & Travel</h5>
         </div>
-        <!-- link -->
+
         <div class="row banner-list gy-3 mb-3">
           <div class="col-12 col-lg-4">
-            <router-link to="/products" class="link-secondary text-center fs-3">
+            <RouterLink to="/products" class="link-secondary text-center fs-3">
               <div class="img-box">
                 <img src="/userHome/journey.png" alt="漫遊行程" />
                 <div class="banner-list-text">漫 遊 行 程</div>
               </div>
-            </router-link>
+            </RouterLink>
           </div>
           <div class="col-12 col-lg-4">
             <a href="#" class="link-secondary text-center fs-3">
@@ -32,15 +31,15 @@
             </a>
           </div>
           <div class="col-12 col-lg-4">
-            <a href="#" class="link-secondary text-center fs-3">
+            <RouterLink to="/accommodations" class="link-secondary text-center fs-3">
               <div class="img-box">
                 <img src="/userHome/accomidation.png" alt="住宿" />
                 <div class="banner-list-text">園 內 住 宿</div>
               </div>
-            </a>
+            </RouterLink>
           </div>
         </div>
-        <!-- news -->
+
         <div class="news p-5">
           <div>
             <h3 class="title mb-0">最新消息</h3>
@@ -120,7 +119,6 @@
             </ul>
           </div>
 
-          <!-- news read more -->
           <div class="text-end">
             <a href="#" class="read-more english link-primary me-2">
               <span class="pe-2">Read More </span>
@@ -131,11 +129,9 @@
       </div>
     </section>
 
-    <!-- journey -->
     <section class="journey pb-7 bg-secondary">
-      <!-- 跑馬燈 -->
       <div class="journey-text">
-        <swiper
+        <Swiper
           :slidesPerView="'auto'"
           :allowTouchMove="false"
           :spaceBetween="0"
@@ -145,40 +141,39 @@
           :modules="modules"
           class="journey-swiper fs-1 py-3 ls-5"
         >
-          <swiper-slide>
+          <SwiperSlide>
             在山林之中深呼吸．Take a deep breath in the forest．在山林之中深呼吸．
-          </swiper-slide>
-          <swiper-slide>
+          </SwiperSlide>
+          <SwiperSlide>
             Take a deep breath in the forest．在山林之中深呼吸．Take a deep breath in the forest．
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </div>
-      <!-- journey-title -->
+
       <div class="mt-5 text-center">
         <h3 class="title mb-0">精選漫遊行程</h3>
         <span class="english fs-5 title">Top Picks Tours </span>
       </div>
-      <!-- card -->
+
       <div class="container">
         <div class="row g-3 my-4">
           <div class="col-12">
             <div class="card mb-3">
               <div class="row g-0">
-                <router-link :to="`/products/${firstProduct.id}`" class="col-md-6 img-box">
+                <RouterLink :to="`/products/${firstProduct.id}`" class="col-md-6 img-box">
                   <img
                     :src="firstProduct.imageUrl"
                     class="img-fluid rounded-start h-100 w-100 object-fit-cover"
                     :alt="firstProduct.title"
                   />
-                </router-link>
+                </RouterLink>
                 <div class="col-md-6">
                   <div class="card-body d-flex flex-column h-100">
-                    <router-link :to="`/products/${firstProduct.id}`">
-                      <!-- px-3 py-4 -->
+                    <RouterLink :to="`/products/${firstProduct.id}`">
                       <h4 class="card-title fw-bold mb-0 link-dark-green bg-light-green">
                         {{ firstProduct.title }}
                       </h4>
-                    </router-link>
+                    </RouterLink>
                     <div class="card-tags p-3">
                       <a
                         href="#"
@@ -198,30 +193,31 @@
                       class="d-flex justify-content-between align-items-end px-3 pb-4 flex-grow-1"
                     >
                       <div>
-                        <del class="text-gray fs-7 fw-normal"
-                          >NT$
+                        <del class="text-gray fs-7 fw-normal">
+                          NT$
                           {{
                             firstProduct.origin_price
                               ? firstProduct.origin_price.toLocaleString('en-US')
                               : ''
                           }}
-                          /位</del
-                        ><br />
-                        <span class="text-danger fs-5"
-                          >NT$
+                          /位
+                        </del>
+                        <br />
+                        <span class="text-danger fs-5">
+                          NT$
                           {{ firstProduct.price ? firstProduct.price.toLocaleString('en-US') : '' }}
-                          /位</span
-                        >
+                          /位
+                        </span>
                       </div>
                       <div>
                         <div class="text-end">
-                          <router-link
+                          <RouterLink
                             :to="`/products/${firstProduct.id}`"
                             class="read-more english link-primary me-4"
                           >
                             <span class="pe-2">Read More </span>
                             <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-                          </router-link>
+                          </RouterLink>
                         </div>
                       </div>
                     </div>
@@ -233,20 +229,20 @@
           <div class="col-12 col-xl-6" v-for="product in products" :key="product.id">
             <div class="card mb-3">
               <div class="row g-0">
-                <router-link :to="`/products/${product.id}`" class="col-md-6 img-box">
+                <RouterLink :to="`/products/${product.id}`" class="col-md-6 img-box">
                   <img
                     :src="product.imageUrl"
                     class="img-fluid rounded-start h-100 w-100 object-fit-cover"
                     :alt="product.title"
                   />
-                </router-link>
+                </RouterLink>
                 <div class="col-md-6">
                   <div class="card-body d-flex flex-column h-100">
-                    <router-link :to="`/products/${product.id}`">
+                    <RouterLink :to="`/products/${product.id}`">
                       <h4 class="card-title fw-bold mb-0 link-dark-green bg-light-green">
                         {{ product.title }}
                       </h4>
-                    </router-link>
+                    </RouterLink>
                     <div class="card-tags p-3">
                       <a
                         href="#"
@@ -266,27 +262,28 @@
                       class="d-flex justify-content-between align-items-end px-3 pb-4 flex-grow-1"
                     >
                       <div>
-                        <del class="text-gray fs-7 fw-normal"
-                          >NT$
+                        <del class="text-gray fs-7 fw-normal">
+                          NT$
                           {{
                             product.origin_price ? product.origin_price.toLocaleString('en-US') : ''
                           }}
-                          /位</del
-                        ><br />
-                        <span class="text-danger fs-5"
-                          >NT$
-                          {{ product.price ? product.price.toLocaleString('en-US') : '' }} /位</span
-                        >
+                          /位
+                        </del>
+                        <br />
+                        <span class="text-danger fs-5">
+                          NT$
+                          {{ product.price ? product.price.toLocaleString('en-US') : '' }} /位
+                        </span>
                       </div>
                       <div>
                         <div class="text-end">
-                          <router-link
+                          <RouterLink
                             :to="`/products/${product.id}`"
                             class="read-more english link-primary me-4"
                           >
                             <span class="pe-2">Read More </span>
                             <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-                          </router-link>
+                          </RouterLink>
                         </div>
                       </div>
                     </div>
@@ -297,28 +294,25 @@
           </div>
         </div>
 
-        <!-- 更多行程 -->
-        <router-link
+        <RouterLink
           to="/products"
           class="read-all link-dark-green text-center border-top border-bottom border-1 py-5 d-block fs-4 ls-5"
         >
           <span class="pe-2">更多行程</span>
           <i class="read-all-icon bi bi-arrow-up-right-circle-fill"></i>
-        </router-link>
+        </RouterLink>
       </div>
     </section>
 
-    <!-- area -->
     <section class="area pb-8 bg-secondary">
-      <!-- area-title -->
       <div class="area-bg text-center">
         <div class="area-title">
           <h3 class="title mb-0 text-light-green">今天，你想去哪座森林？</h3>
           <span class="english fw-bold">Which forest do you want to go to today?</span>
         </div>
       </div>
-      <!-- area-swiper -->
-      <swiper
+
+      <Swiper
         :slidesPerView="'auto'"
         :centeredSlides="true"
         :spaceBetween="30"
@@ -326,57 +320,57 @@
         :modules="modules"
         class="area-swiper"
       >
-        <swiper-slide>
+        <SwiperSlide>
           <a href="#" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">全年 24 小時開放</p>
           </a>
           <img src="/userHome/area_阿里山.jpg" alt="阿里山" />
-        </swiper-slide>
-        <swiper-slide>
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">太平山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">平日 06:00-18:00<br />假日 04:00-18:00</p>
           </a>
           <img src="/userHome/area_太平山.jpg" alt="太平山" />
-        </swiper-slide>
-        <swiper-slide>
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">大雪山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">每日 06:30-17:00</p>
           </a>
           <img src="/userHome/area_大雪山.jpg" alt="大雪山" />
-        </swiper-slide>
-        <swiper-slide>
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">內洞<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">平日 08:00-17:00<br />假日 07:00-17:00</p>
           </a>
           <img src="/userHome/area_內洞.jpg" alt="內洞" />
-        </swiper-slide>
-        <swiper-slide>
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">東眼山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">平日 08:00-17:00<br />假日 07:00-17:00</p>
           </a>
           <img src="/userHome/area_東眼山.jpg" alt="東眼山" />
-        </swiper-slide>
-        <swiper-slide>
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">武陵<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">全年 24 小時開放<br />配合武陵農場</p>
           </a>
           <img src="/userHome/area_武陵.jpg" alt="武陵" />
-        </swiper-slide>
-        <swiper-slide>
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">奧萬大<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">每天 08:00-17:00</p>
           </a>
           <img src="/userHome/area_奧萬大.jpg" alt="奧萬大" />
-        </swiper-slide>
-      </swiper>
-      <!-- 更多森林 -->
+        </SwiperSlide>
+      </Swiper>
+
       <div class="container my-5">
         <a
           href="#"
@@ -408,17 +402,20 @@ export default {
     return {
       modules: [Autoplay],
       firstProduct: {},
-      products: []
+      products: [],
+      isLoading: false
     };
   },
   mounted() {
     const api = `${VITE_URL}/api/${VITE_PATH}/products`;
+    this.isLoading = true;
 
     this.axios
       .get(api)
       .then((res) => {
         this.firstProduct = res.data.products.slice(0, 1)[0];
         this.products = res.data.products.slice(1, 3);
+        this.isLoading = false;
       })
       .catch((err) => {
         alert(err.Response.data.message);

@@ -3,7 +3,6 @@
     <div class="row w-100">
       <div class="col-12 col-md-5 col-lg-4 mx-auto">
         <h2 class="mb-3">請先登入</h2>
-        <!-- submit 後驗證 -->
         <form @submit.prevent="login">
           <div class="form-floating mb-3">
             <input
@@ -37,16 +36,13 @@
 </template>
 
 <script>
-// 載入 axios
 import axios from 'axios';
 
-// 載入環境變數
 const { VITE_URL } = import.meta.env;
 
 export default {
   data() {
     return {
-      // 後台登入資料
       user: {
         username: '',
         password: ''
@@ -59,13 +55,10 @@ export default {
       axios
         .post(api, this.user)
         .then((res) => {
-          // 取得 token 和到期日
           const { token, expired } = res.data;
-          // 設定 cookie，在後台產品列表做驗證
           document.cookie = `yu-t-200053=${token};expires=${new Date(expired)};`;
           alert(res.data.message);
 
-          // 用 router 的方法來切換頁面
           this.$router.push('/admin/products');
         })
         .catch((err) => {

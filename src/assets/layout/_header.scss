@@ -1,29 +1,29 @@
 .navbar {
-    background-color: rgba($color: #fff, $alpha: .2);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+  background-color: rgba($color: #fff, $alpha: 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 
-    .burger {
-        transition: ease-in-out .2s;
+  .burger {
+    transition: ease-in-out 0.2s;
 
-        &:hover {
-            color: $primary;
-        }
+    &:hover {
+      color: $primary;
     }
+  }
 
-    .btn {
-        position: relative;
+  .btn {
+    position: relative;
 
-        .badge {
-            position: absolute;
-            transform: translate(-50%, -50%);
-            top: 0;
-            right: -16px;
-        }
+    .badge {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 0;
+      right: -16px;
     }
+  }
 }
 
 .dropdown-menu {
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }

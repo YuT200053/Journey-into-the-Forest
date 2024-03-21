@@ -1,31 +1,31 @@
 // Functions first
-@import "bootstrap/scss/functions";
+@import 'bootstrap/scss/functions';
 
 // Required Bootstrap imports
-@import "helpers/variables.scss"; // 自定義
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/root";
+@import 'helpers/variables.scss'; // 自定義
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/root';
 
 // Optional components
-@import "helpers/utilities";
-@import "bootstrap/scss/containers";
-@import "bootstrap/scss/reboot";
-@import "bootstrap/scss/grid";
-@import "bootstrap/scss/utilities/api";
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/navbar";
-@import "bootstrap/scss/nav";
-@import "bootstrap/scss/transitions";
-@import "bootstrap/scss/badge";
-@import "bootstrap/scss/forms";
-@import "bootstrap/scss/card";
-@import "bootstrap/scss/pagination";
-@import "bootstrap/scss/list-group";
-@import "bootstrap/scss/helpers/position";
-@import "bootstrap/scss/helpers/colored-links";
-@import "bootstrap/scss/forms/input-group";
+@import 'helpers/utilities';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/utilities/api';
+@import 'bootstrap/scss/buttons';
+@import 'bootstrap/scss/navbar';
+@import 'bootstrap/scss/nav';
+@import 'bootstrap/scss/transitions';
+@import 'bootstrap/scss/badge';
+@import 'bootstrap/scss/forms';
+@import 'bootstrap/scss/card';
+@import 'bootstrap/scss/pagination';
+@import 'bootstrap/scss/list-group';
+@import 'bootstrap/scss/helpers/position';
+@import 'bootstrap/scss/helpers/colored-links';
+@import 'bootstrap/scss/forms/input-group';
 
 // bs icons
 // @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
@@ -34,18 +34,18 @@
 // @import "../node_modules/swiper/swiper-bundle.min.css";
 
 // helpers
-@import "helpers/mixin";
+@import 'helpers/mixin';
 
 // base
-@import "base/base";
+@import 'base/base';
 
 // layout
-@import "layout/header";
-@import "layout/footer";
+@import 'layout/header';
+@import 'layout/footer';
 
 // pages
-@import "pages/userHome";
-@import "pages/userProducts";
-@import "pages/userProduct";
-@import "pages/userCart";
-@import "pages/userAccommodations";
+@import 'pages/userHome';
+@import 'pages/userProducts';
+@import 'pages/userProduct';
+@import 'pages/userCart';
+@import 'pages/userAccommodations';

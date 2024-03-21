@@ -1,4 +1,3 @@
-// 導入 bootstrap
 import 'bootstrap/scss/bootstrap.scss';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -7,10 +6,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
-// 導入 Loading Overlay
 import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
-// 導入 VeeValidate
 import { Field, Form, ErrorMessage, defineRule, configure } from 'vee-validate';
 import * as AllRules from '@vee-validate/rules';
 import { localize, setLocale } from '@vee-validate/i18n';
@@ -45,11 +43,9 @@ app.use(createPinia());
 app.use(router);
 
 app.use(VueAxios, axios);
-// 註冊 Vee-Validate 元件
 app.component('VeeForm', Form);
 app.component('VeeField', Field);
 app.component('ErrorMessage', ErrorMessage);
-// 註冊 loading 元件
 app.component('VueLoading', Loading);
 
 app.mount('#app');

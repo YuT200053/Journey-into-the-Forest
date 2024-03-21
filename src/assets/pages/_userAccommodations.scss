@@ -1,127 +1,127 @@
 .accommodations-banner {
-    position: relative;
-    z-index: 0;
+  position: relative;
+  z-index: 0;
 
-    // banner 漸層
-    &::before {
-        content: '';
-        top: 400px;
-        @include image-linear($light-green, top, 0, -100%);
-    }
+  // banner 漸層
+  &::before {
+    content: '';
+    top: 400px;
+    @include image-linear($light-green, top, 0, -100%);
+  }
 
-    // banner 背景圖
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        z-index: -2;
-        width: 100%;
-        height: 400px;
-        background-image: url('/userAccommodations/accommodations_bg.jpg');
-        background-position: center 40%;
-        background-size: cover;
-    }
+  // banner 背景圖
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    width: 100%;
+    height: 400px;
+    background-image: url('/userAccommodations/accommodations_bg.jpg');
+    background-position: center 40%;
+    background-size: cover;
+  }
 
-    &-title {
-        max-width: 500px;
-        height: auto;
-        margin: 450px auto 0px;
-        z-index: 3;
-    }
+  &-title {
+    max-width: 500px;
+    height: auto;
+    margin: 450px auto 0px;
+    z-index: 3;
+  }
 }
 
 .accommodations-card {
-    .card {
-        padding: 1px;
-        position: relative;
-        z-index: 1;
-        @include zoom(.2s);
-        @include outline(30px, 5px);
+  .card {
+    padding: 1px;
+    position: relative;
+    z-index: 1;
+    @include zoom(0.2s);
+    @include outline(30px, 5px);
 
-        &:hover {
-            background-color: rgba($color: $secondary, $alpha: .25);
-        }
-
-        img {
-            object-fit: cover !important;
-            object-position: center center !important;
-            @include zoom(.5s);
-        }
-
-        &:hover img {
-            transform: scale(1.1);
-        }
-
-        &-title {
-            position: relative;
-            z-index: -1;
-            border-radius: 0px 0px 30px 0px;
-            margin-top: -30px;
-            padding-top: 54px;
-            padding-bottom: 24px;
-            padding-left: 16px;
-            @include zoom(.5s);
-
-            @include md() {
-                border-radius: 0px 0px 30px 5px;
-                margin-top: -30px;
-                padding-top: 54px;
-            }
-
-            // 要再包一層，不然會因為 padding 跑第二行出來
-            span {
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-
-        &:hover .card-title {
-            background-color: rgba($color: $primary, $alpha: .8) !important;
-        }
-
-        &-text {
-            // 手機優先，所以這邊是手機
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            @include outline(30px, 0px);
-
-            @include sm() {
-                -webkit-line-clamp: 3;
-            }
-
-            @include lg() {
-                -webkit-line-clamp: 4;
-            }
-        }
-
-        &::before {
-            content: "";
-            @include outline-top(30px, -1);
-        }
-
-        &::after {
-            content: "";
-            @include outline-bottom(30px, -1);
-        }
+    &:hover {
+      background-color: rgba($color: $secondary, $alpha: 0.25);
     }
 
-    .img-box {
-        height: 200px;
-        border-radius: 30px 5px 30px 5px;
+    img {
+      object-fit: cover !important;
+      object-position: center center !important;
+      @include zoom(0.5s);
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    &-title {
+      position: relative;
+      z-index: -1;
+      border-radius: 0px 0px 30px 0px;
+      margin-top: -30px;
+      padding-top: 54px;
+      padding-bottom: 24px;
+      padding-left: 16px;
+      @include zoom(0.5s);
+
+      @include md() {
+        border-radius: 0px 0px 30px 5px;
+        margin-top: -30px;
+        padding-top: 54px;
+      }
+
+      // 要再包一層，不然會因為 padding 跑第二行出來
+      span {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
         overflow: hidden;
-
-        @include md() {
-            border-radius: 30px 5px 30px 5px;
-        }
+        text-overflow: ellipsis;
+      }
     }
 
-    .list-group-item {
-        @include outline(30px, 5px);
+    &:hover .card-title {
+      background-color: rgba($color: $primary, $alpha: 0.8) !important;
     }
+
+    &-text {
+      // 手機優先，所以這邊是手機
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @include outline(30px, 0px);
+
+      @include sm() {
+        -webkit-line-clamp: 3;
+      }
+
+      @include lg() {
+        -webkit-line-clamp: 4;
+      }
+    }
+
+    &::before {
+      content: '';
+      @include outline-top(30px, -1);
+    }
+
+    &::after {
+      content: '';
+      @include outline-bottom(30px, -1);
+    }
+  }
+
+  .img-box {
+    height: 200px;
+    border-radius: 30px 5px 30px 5px;
+    overflow: hidden;
+
+    @include md() {
+      border-radius: 30px 5px 30px 5px;
+    }
+  }
+
+  .list-group-item {
+    @include outline(30px, 5px);
+  }
 }

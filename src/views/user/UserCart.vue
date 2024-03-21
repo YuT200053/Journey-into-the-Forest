@@ -1,15 +1,14 @@
 <template>
-  <!-- banner  -->
+  <VueLoading :active="isLoading" />
   <section class="cart-banner img-box mb-4">
     <div class="container">
-      <!-- title -->
       <div class="cart-banner-title text-center w-100">
         <h1 class="title mb-0">購物車</h1>
         <span class="english fs-5 title">Cart</span>
       </div>
     </div>
   </section>
-  <!-- cart -->
+
   <section class="container mb-7">
     <!-- if cart is empty -->
     <div
@@ -19,26 +18,31 @@
     >
       <i class="bi bi-stars me-1"></i>目前購物車是空的，趕快加入你的漫遊行程吧！
     </div>
+
     <div class="row">
-      <div class="col-12 col-lg-8">
-        <!-- cart list -->
+      <div class="col-12 col-lg-8 mb-5 mb-lg-0">
         <div
           class="p-3 mb-2 bg-secondary rounded-3 d-flex border border-1"
           v-for="product in carts.carts"
           :key="product.id"
         >
-          <button type="button" class="btn ps-0" @click.prevent="deleteCart(product.id)">
+          <button
+            type="button"
+            class="btn ps-0"
+            :disabled="isLoading"
+            @click.prevent="deleteCart(product.id)"
+          >
             <i class="bi bi-x-lg"></i>
           </button>
           <div class="row gx-2 align-items-center">
-            <div class="col-3">
+            <div class="col-12 col-sm-3 mb-1 mb-sm-0">
               <img
                 :src="product.product.imageUrl"
                 :alt="product.product.title"
                 class="w-100 rounded-3"
               />
             </div>
-            <div class="col-5">
+            <div class="col-12 col-sm-5 mb-1 mb-sm-0">
               <span class="fs-5">{{ product.product.title }}</span>
               <br />
               <del class="text-muted fs-7">
@@ -54,26 +58,32 @@
                 }}
               </span>
             </div>
-            <div class="col-2">
+            <div class="col-12 col-sm-2">
               <select
-                class="form-select form-select-sm"
+                class="form-select form-select-sm mb-1 mb-sm-0"
+                :disabled="isLoading"
                 v-model="product.qty"
                 @change="changeQty(product, product.qty)"
               >
                 <option v-for="i in 10" :key="i" :value="i">{{ i }} 張</option>
               </select>
             </div>
-            <div class="col-2 text-end text-primary">
+            <div class="col-12 col-sm-2 text-end text-primary">
               小計 ${{ product.total ? product.total.toLocaleString('en-US') : '' }}
             </div>
           </div>
         </div>
-        <!-- delete all & total price -->
+
         <div
           class="d-flex justify-content-between pe-3"
           v-if="carts.carts ? carts.carts.length : 0"
         >
-          <button type="button" class="btn btn-outline-dark-green" @click.prevent="deleteAll()">
+          <button
+            type="button"
+            class="btn btn-outline-dark-green"
+            :disabled="isLoading"
+            @click.prevent="deleteAll()"
+          >
             <i class="bi bi-trash3 me-1"></i>清空購物車
           </button>
           <div class="fs-4 text-danger ls-2">
@@ -81,7 +91,7 @@
           </div>
         </div>
       </div>
-      <!-- order information -->
+
       <div class="col-12 col-lg-4" v-if="carts.carts ? carts.carts.length : 0">
         <div class="product-description p-5">
           <div class="mb-3">
@@ -99,9 +109,9 @@
                 placeholder="請輸入 Email"
                 rules="email|required"
                 v-model="form.user.email"
-              ></VeeField>
+              />
               <label for="email">Email</label>
-              <error-message name="email" class="invalid-feedback"></error-message>
+              <ErrorMessage name="email" class="invalid-feedback" />
             </div>
             <div class="form-floating mb-3">
               <VeeField
@@ -113,9 +123,9 @@
                 placeholder="請輸入姓名"
                 rules="required"
                 v-model="form.user.name"
-              ></VeeField>
+              />
               <label for="name">收件人姓名</label>
-              <error-message name="姓名" class="invalid-feedback"></error-message>
+              <ErrorMessage name="姓名" class="invalid-feedback" />
             </div>
             <div class="form-floating mb-3">
               <VeeField
@@ -127,9 +137,9 @@
                 placeholder="請輸入電話"
                 rules="required|min:8||numeric"
                 v-model="form.user.tel"
-              ></VeeField>
+              />
               <label for="tel">收件人電話</label>
-              <error-message name="電話" class="invalid-feedback"></error-message>
+              <ErrorMessage name="電話" class="invalid-feedback" />
             </div>
             <div class="form-floating mb-3">
               <VeeField
@@ -141,9 +151,9 @@
                 placeholder="請輸入地址"
                 rules="required"
                 v-model="form.user.address"
-              ></VeeField>
+              />
               <label for="address">收件人地址</label>
-              <error-message name="地址" class="invalid-feedback"></error-message>
+              <ErrorMessage name="地址" class="invalid-feedback" />
             </div>
             <div class="form-floating mb-3">
               <textarea
@@ -173,6 +183,20 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
+import Swal from 'sweetalert2';
+const success = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  background: '#f4f9f3',
+  color: '#505843',
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
 
 export default {
   data() {
@@ -186,16 +210,20 @@ export default {
           address: ''
         },
         message: ''
-      }
+      },
+      isLoading: false
     };
   },
   methods: {
     getCart() {
       const api = `${VITE_URL}/api/${VITE_PATH}/cart`;
+      this.isLoading = true;
+
       this.axios
         .get(api)
         .then((res) => {
           this.carts = res.data.data;
+          this.isLoading = false;
         })
         .catch((err) => {
           alert(err.response.data.message);
@@ -206,9 +234,12 @@ export default {
 
       this.axios
         .delete(api)
-        .then((res) => {
-          alert(res.data.message);
+        .then(() => {
           this.getCart();
+          success.fire({
+            icon: 'success',
+            title: '已刪除此產品！'
+          });
         })
         .catch((err) => {
           alert(err.response.data.message);
@@ -219,9 +250,12 @@ export default {
 
       this.axios
         .delete(api)
-        .then((res) => {
-          alert(res.data.message);
+        .then(() => {
           this.getCart();
+          success.fire({
+            icon: 'success',
+            title: '已清空購物車！'
+          });
         })
         .catch((err) => {
           alert(err.response.data.message);
@@ -236,9 +270,12 @@ export default {
 
       this.axios
         .put(api, { data: order })
-        .then((res) => {
-          alert(res.data.message);
+        .then(() => {
           this.getCart();
+          success.fire({
+            icon: 'success',
+            title: '已更新產品數量！'
+          });
         })
         .catch((err) => {
           alert(err.response.data.message);
@@ -247,15 +284,16 @@ export default {
     createOrder() {
       const api = `${VITE_URL}/api/${VITE_PATH}/order`;
       const order = this.form;
-      console.log('1');
 
       this.axios
         .post(api, { data: order })
-        .then((res) => {
-          alert(res.data.message);
-          this.$refs.form.resetForm();
-          this.getCart();
-          console.log('2');
+        .then(() => {
+          success.fire({
+            icon: 'success',
+            title: '已成功送出訂單！'
+          });
+          // 送出訂單後，導回首頁
+          this.$router.push('/');
         })
         .catch((err) => {
           alert(err.response.data.message);

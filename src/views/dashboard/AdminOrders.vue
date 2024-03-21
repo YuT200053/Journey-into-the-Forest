@@ -2,7 +2,6 @@
   <div class="container mx-auto">
     <VueLoading :active="isLoading" />
     <h2 class="text-center">後台訂單</h2>
-    <!-- 訂單列表 -->
     <table class="table align-middle">
       <thead>
         <tr>
@@ -66,12 +65,9 @@
         </tr>
       </tbody>
     </table>
-    <!-- 頁碼 -->
-    <PaginationComponent :pagination="pagination" @get-products="getOrders"></PaginationComponent>
-    <!-- 檢視 modal -->
-    <OrderModal ref="orderModal" :temp-order="tempOrder" @update-order="updateOrder"></OrderModal>
-    <!-- 刪除 modal -->
-    <DeleteModal ref="deleteModal" :temp-item="tempOrder" @delete-item="deleteOrder"></DeleteModal>
+    <PaginationComponent :pagination="pagination" @get-products="getOrders" />
+    <OrderModal ref="orderModal" :temp-order="tempOrder" @update-order="updateOrder" />
+    <DeleteModal ref="deleteModal" :temp-item="tempOrder" @delete-item="deleteOrder" />
   </div>
 </template>
 
@@ -98,7 +94,6 @@ export default {
     DeleteModal
   },
   methods: {
-    // 一樣要帶入頁碼
     getOrders(page = 1) {
       const api = `${VITE_URL}/api/${VITE_PATH}/admin/orders?page=${page}`;
       this.isLoading = true;
@@ -106,7 +101,6 @@ export default {
       axios
         .get(api)
         .then((res) => {
-          // 把資料帶進 data 中
           this.orders = res.data.orders;
           this.pagination = res.data.pagination;
           this.isLoading = false;
@@ -116,7 +110,6 @@ export default {
           this.isLoading = false;
         });
     },
-    // 一樣用淺層複製將該訂單帶入 tempOrder
     openModal(order, isView) {
       this.tempOrder = { ...order };
       this.isLoading = true;
@@ -150,7 +143,6 @@ export default {
           this.isLoading = false;
         });
     },
-    // 刪除訂單
     deleteOrder() {
       const api = `${VITE_URL}/api/${VITE_PATH}/admin/order/${this.tempOrder.id}`;
       this.isLoading = true;

@@ -1,9 +1,7 @@
 <template>
   <header>
-    <!-- navbar  -->
     <nav class="navbar navbar-expand-lg fixed-top border-bottom">
       <div class="container py-2">
-        <!-- logo -->
         <RouterLink to="/" class="navbar-brand">
           <img
             src="/logo/logo-navbar.png"
@@ -12,7 +10,7 @@
             class="d-inline-block align-text-top object-fit-cover w-100"
           />
         </RouterLink>
-        <!-- burger -->
+        <!-- burger list -->
         <button
           class="navbar-toggler border-0"
           type="button"
@@ -24,28 +22,28 @@
         >
           <i class="bi bi-list fs-1 burger"></i>
         </button>
-        <!-- navbar list -->
+
         <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbar">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
             <li class="nav-item px-3 border-end-lg border-1 py-2">
               <a class="nav-link" href="#">最新消息</a>
             </li>
             <li class="nav-item px-3 border-end-lg border-1 py-2">
-              <router-link to="/products" class="nav-link">漫遊行程</router-link>
+              <RouterLink to="/products" class="nav-link">漫遊行程</RouterLink>
             </li>
             <li class="nav-item px-3 border-end-lg border-1 py-2">
               <a class="nav-link" href="#">所有地點</a>
             </li>
             <li class="nav-item px-3 py-2">
-              <router-link to="/accommodations" class="nav-link">園內住宿</router-link>
+              <RouterLink to="/accommodations" class="nav-link">園內住宿</RouterLink>
             </li>
             <li class="nav-item px-3 py-2 py-lg-0">
-              <router-link to="/cart" class="btn btn-primary text-white ms-lg-3">
+              <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3">
                 <i class="bi bi-bag me-1"></i>查看購物車
                 <span class="badge bg-danger rounded-pill">
-                  {{ carts.carts ? carts.carts.length : '' }}</span
-                >
-              </router-link>
+                  {{ carts.carts ? carts.carts.length : '' }}
+                </span>
+              </RouterLink>
             </li>
           </ul>
         </div>
@@ -53,23 +51,21 @@
     </nav>
   </header>
 
-  <router-view></router-view>
+  <router-view />
 
   <footer class="footer bg-secondary">
-    <!-- subscription -->
     <div
       class="bg-light-green border-1 border-top p-4 p-lg-6 d-flex justify-content-between flex-column flex-xl-row"
     >
-      <!-- logo -->
       <img src="/logo/logo.png" alt="漫途森旅" class="footer-logo mb-4 mb-xl-0" />
       <div class="text-start text-xl-end d-flex flex-column justify-content-between flex-shirk-1">
-        <!-- slogan -->
         <div class="mb-3">
           <h3 class="fw-bold ls-5">
-            享受無拘<span class="text-primary">漫遊之途</span><br />浸入盎然<span
-              class="text-primary"
-              >森林</span
-            >來場放慢身心的<span class="text-primary">旅程</span>
+            享受無拘<span class="text-primary">漫遊之途</span>
+            <br />
+            浸入盎然<span class="text-primary">森林</span>來場放慢身心的<span class="text-primary"
+              >旅程</span
+            >
           </h3>
           <h5 class="fw-bold">Meander, Explore, Forest & Travel</h5>
         </div>
@@ -91,7 +87,7 @@
         </div>
       </div>
     </div>
-    <!-- footer list -->
+
     <ul
       class="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center mb-2 mb-lg-0 px-4 px-lg-6 py-3 text-center border-top border-bottom border-1"
     >
@@ -99,24 +95,24 @@
         <a class="link-gray" href="#">最新消息</a>
       </li>
       <li class="border-end-md border-1 px-4 py-2">
-        <router-link to="/products" class="link-gray">漫遊行程</router-link>
+        <RouterLink to="/products" class="link-gray">漫遊行程</RouterLink>
       </li>
       <li class="border-end-md border-1 px-4 py-2">
         <a class="link-gray" href="#">所有地點</a>
       </li>
       <li class="px-4 py-2">
-        <router-link to="/accommodations" class="link-gray">園內住宿</router-link>
+        <RouterLink to="/accommodations" class="link-gray">園內住宿</RouterLink>
       </li>
       <li class="py-2 py-lg-0">
-        <router-link to="/cart" class="btn btn-primary text-white ms-lg-3 h-100">
+        <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3 h-100">
           <i class="bi bi-bag me-1"></i>查看購物車
           <span class="badge bg-danger rounded-pill">
             {{ carts.carts ? carts.carts.length : '' }}</span
           >
-        </router-link>
+        </RouterLink>
       </li>
     </ul>
-    <!-- social & admin -->
+
     <div class="px-4 px-lg-6 py-6">
       <div class="d-flex justify-content-center justify-content-md-start fs-4 mb-3">
         <a href="https://www.facebook.com/" class="link-dark-green footer-icon">
@@ -133,9 +129,9 @@
         <div class="english fs-6 text-gray mb-3 mb-md-0">
           Copyright © 漫途森旅 All Rights Reserved.
         </div>
-        <router-link to="/login" class="btn btn-dark-green text-white" href="#">
+        <RouterLink to="/login" class="btn btn-dark-green text-white" href="#">
           <i class="bi bi-laptop"></i> 登入後台
-        </router-link>
+        </RouterLink>
       </div>
     </div>
   </footer>

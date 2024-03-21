@@ -36,6 +36,12 @@ const router = createRouter({
           path: 'accommodations',
           name: 'accommodations',
           component: () => import('../views/user/UserAccommodations.vue')
+        },
+        // 404 頁面
+        {
+          path: ':pathMatch(.*)*',
+          name: '404',
+          component: () => import('../views/user/NotFound.vue')
         }
       ]
     },
