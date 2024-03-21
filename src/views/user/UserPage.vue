@@ -71,19 +71,24 @@
         </div>
         <div>
           <div class="text-muted mb-1 ls-2">立即訂閱，接收最新活動消息與優惠！</div>
-          <div class="input-group me-auto me-xl-0 ms-xl-auto">
-            <input
-              type="email"
-              class="form-control"
-              placeholder="輸入您的 Email"
-              aria-label="subscription email"
-              aria-describedby="button-addon2"
-              id="sub-button"
-            />
-            <button class="btn btn-primary text-white" type="button" id="button-addon2">
-              立即訂閱
-            </button>
-          </div>
+
+          <VeeForm v-slot="{ errors }" @submit="addSub()" ref="form">
+            <div class="d-flex mb-3">
+              <div class="me-1">
+                <VeeField
+                  id="email"
+                  name="email"
+                  type="email"
+                  class="form-control input-width"
+                  :class="{ 'is-invalid': errors['email'] }"
+                  placeholder="請輸入 Email"
+                  rules="email|required"
+                />
+                <ErrorMessage name="email" class="invalid-feedback" />
+              </div>
+              <button class="btn btn-primary text-white btn-height" type="submit">立即訂閱</button>
+            </div>
+          </VeeForm>
         </div>
       </div>
     </div>
@@ -139,6 +144,20 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
+import Swal from 'sweetalert2';
+const success = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  background: '#f4f9f3',
+  color: '#505843',
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
 
 export default {
   data() {
@@ -157,6 +176,13 @@ export default {
         .catch((err) => {
           alert(err.response.data.message);
         });
+    },
+    addSub() {
+      this.$refs.form.resetForm();
+      success.fire({
+        icon: 'success',
+        title: '已成功訂閱漫途森旅！'
+      });
     }
   },
   mounted() {
@@ -164,3 +190,12 @@ export default {
   }
 };
 </script>
+
+<style>
+.input-width {
+  max-width: 270px;
+}
+.btn-height {
+  max-height: 37.6px;
+}
+</style>

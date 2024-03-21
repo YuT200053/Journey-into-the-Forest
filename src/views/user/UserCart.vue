@@ -30,7 +30,7 @@
             type="button"
             class="btn ps-0"
             :disabled="isLoading"
-            @click.prevent="deleteCart(product.id)"
+            @click.prevent="deleteModal(false, product)"
           >
             <i class="bi bi-x-lg"></i>
           </button>
@@ -82,7 +82,7 @@
             type="button"
             class="btn btn-outline-dark-green"
             :disabled="isLoading"
-            @click.prevent="deleteAll()"
+            @click.prevent="deleteModal(true)"
           >
             <i class="bi bi-trash3 me-1"></i>清空購物車
           </button>
@@ -197,6 +197,17 @@ const success = Swal.mixin({
     toast.onmouseleave = Swal.resumeTimer;
   }
 });
+const question = Swal.mixin({
+  background: '#f4f9f3',
+  color: '#505843',
+  confirmButtonText: '確定',
+  confirmButtonColor: '#7d8b72',
+  showCancelButton: true,
+  cancelButtonText: '取消',
+  customClass: {
+    cancelButton: 'cancelBtn'
+  }
+});
 
 export default {
   data() {
@@ -229,8 +240,35 @@ export default {
           alert(err.response.data.message);
         });
     },
+    deleteModal(all, product) {
+      if (all) {
+        question
+          .fire({
+            icon: 'question',
+            title: `確定要清空購物車嗎？`
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              this.deleteAll();
+            }
+          });
+      } else {
+        question
+          .fire({
+            icon: 'question',
+            title: `確定要刪除「${product.product.title}」嗎？`
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              this.deleteCart(product.id);
+            }
+          });
+      }
+    },
     deleteCart(id) {
       const api = `${VITE_URL}/api/${VITE_PATH}/cart/${id}`;
+
+      console.log(id);
 
       this.axios
         .delete(api)
@@ -305,3 +343,16 @@ export default {
   }
 };
 </script>
+
+<style>
+.swal2-actions .cancelBtn {
+  background-color: transparent;
+  border: 1px solid #7d8b72;
+  color: #7d8b72;
+}
+.swal2-actions .cancelBtn:hover {
+  background-color: #7d8b72;
+  border: 1px solid #7d8b72;
+  color: #fff;
+}
+</style>
