@@ -59,11 +59,12 @@ export default {
     this.axios
       .get('/userAccommodations/userAccommodations.json')
       .then((res) => {
+        console.log(res);
         this.accommodations = res.data;
         this.isLoading = false;
       })
-      .catch((err) => {
-        alert(err.response.data.message);
+      .catch(() => {
+        alert('找不到資料！');
       });
   }
 };
