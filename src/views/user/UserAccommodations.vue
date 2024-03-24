@@ -57,7 +57,7 @@ export default {
     this.isLoading = true;
 
     this.axios
-      .get('public/userAccommodations/userAccommodations.json')
+      .get('/userAccommodations/userAccommodations.json')
       .then((res) => {
         this.accommodations = res.data;
         this.isLoading = false;
