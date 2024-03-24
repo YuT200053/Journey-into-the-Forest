@@ -29,15 +29,14 @@
                       <span>{{ product.title }}</span>
                     </h4>
                   </RouterLink>
-                  <div class="card-tags p-3">
-                    <a
-                      href="#"
-                      class="badge rounded-pill btn btn-primary text-white me-1"
+                  <div class="p-3">
+                    <span
+                      class="badge rounded-pill bg-primary text-white me-1"
                       v-for="(category, index) in product.category.split(',').slice(0, 3)"
                       :key="'category' + index"
                     >
                       {{ `#${category}` }}
-                    </a>
+                    </span>
                   </div>
                   <p class="card-text fw-normal link-gray px-3">
                     {{ product.description }}
@@ -57,17 +56,14 @@
                         {{ product.price ? product.price.toLocaleString('en-US') : '' }} /位
                       </span>
                     </div>
-                    <div>
-                      <div class="text-end">
-                        <RouterLink
-                          :to="`/products/${product.id}`"
-                          class="read-more english link-primary me-4"
-                        >
-                          <span class="pe-2">Read More </span>
-                          <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-                        </RouterLink>
-                      </div>
-                    </div>
+
+                    <RouterLink
+                      :to="`/products/${product.id}`"
+                      class="read-more fw-normal me-2 d-flex justify-content-end align-items-center"
+                    >
+                      <span class="me-1 fs-7 ls-2">閱讀更多</span>
+                      <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
+                    </RouterLink>
                   </div>
                 </div>
               </div>

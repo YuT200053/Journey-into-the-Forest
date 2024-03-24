@@ -11,11 +11,7 @@
 
   <section class="container mb-7">
     <!-- if cart is empty -->
-    <div
-      class="alert alert-secondary border border-1 text-center"
-      role="alert"
-      v-if="carts.carts ? !carts.carts.length : 0"
-    >
+    <div class="text-center text-muted" role="alert" v-if="carts.carts ? !carts.carts.length : 0">
       <i class="bi bi-stars me-1"></i>目前購物車是空的，趕快加入你的漫遊行程吧！
     </div>
 
@@ -131,11 +127,11 @@
               <VeeField
                 id="tel"
                 name="電話"
-                type="tel"
+                type="number"
                 class="form-control"
                 :class="{ 'is-invalid': errors['電話'] }"
                 placeholder="請輸入電話"
-                rules="required|min:8||numeric"
+                :rules="isPhone"
                 v-model="form.user.tel"
               />
               <label for="tel">收件人電話</label>
@@ -336,6 +332,10 @@ export default {
         .catch((err) => {
           alert(err.response.data.message);
         });
+    },
+    isPhone(value) {
+      const phoneNumber = /^(09)[0-9]{8}$/;
+      return phoneNumber.test(value) ? true : '請正確的手機號碼';
     }
   },
   mounted() {

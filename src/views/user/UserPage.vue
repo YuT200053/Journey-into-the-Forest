@@ -19,11 +19,12 @@
           aria-controls="navbar"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          @click.prevent="navbarToggle()"
         >
           <i class="bi bi-list fs-1 burger"></i>
         </button>
 
-        <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbar">
+        <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbar" ref="navbar">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
             <li class="nav-item px-3 border-end-lg border-1 py-2">
               <a class="nav-link" href="#">最新消息</a>
@@ -39,7 +40,7 @@
             </li>
             <li class="nav-item px-3 py-2 py-lg-0">
               <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3">
-                <i class="bi bi-bag me-1"></i>查看購物車
+                <i class="bi bi-bag me-1"></i>購物車
                 <span class="badge bg-danger rounded-pill">
                   {{ carts.carts ? carts.carts.length : '' }}
                 </span>
@@ -55,7 +56,7 @@
 
   <footer class="footer bg-secondary">
     <div
-      class="bg-light-green border-1 border-top p-4 p-lg-6 d-flex justify-content-between flex-column flex-xl-row"
+      class="bg-light-green border-1 border-top border-bottom p-4 p-lg-6 d-flex justify-content-between flex-column flex-xl-row"
     >
       <img src="/logo/logo.png" alt="漫途森旅" class="footer-logo mb-4 mb-xl-0" />
       <div class="text-start text-xl-end d-flex flex-column justify-content-between flex-shirk-1">
@@ -73,7 +74,7 @@
           <div class="text-muted mb-1 ls-2">立即訂閱，接收最新活動消息與優惠！</div>
 
           <VeeForm v-slot="{ errors }" @submit="addSub()" ref="form">
-            <div class="d-flex mb-3">
+            <div class="d-flex">
               <div class="me-1">
                 <VeeField
                   id="email"
@@ -92,31 +93,6 @@
         </div>
       </div>
     </div>
-
-    <ul
-      class="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center mb-2 mb-lg-0 px-4 px-lg-6 py-3 text-center border-top border-bottom border-1"
-    >
-      <li class="border-end-md border-1 px-4 pe-md-4 ps-md-0 py-2">
-        <a class="link-gray" href="#">最新消息</a>
-      </li>
-      <li class="border-end-md border-1 px-4 py-2">
-        <RouterLink to="/products" class="link-gray">漫遊行程</RouterLink>
-      </li>
-      <li class="border-end-md border-1 px-4 py-2">
-        <a class="link-gray" href="#">所有地點</a>
-      </li>
-      <li class="px-4 py-2">
-        <RouterLink to="/accommodations" class="link-gray">園內住宿</RouterLink>
-      </li>
-      <li class="py-2 py-lg-0">
-        <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3 h-100">
-          <i class="bi bi-bag me-1"></i>查看購物車
-          <span class="badge bg-danger rounded-pill">
-            {{ carts.carts ? carts.carts.length : '' }}</span
-          >
-        </RouterLink>
-      </li>
-    </ul>
 
     <div class="px-4 px-lg-6 py-6">
       <div class="d-flex justify-content-center justify-content-md-start fs-4 mb-3">
@@ -144,7 +120,9 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
+// import { Collapse } from 'bootstrap';
 import Swal from 'sweetalert2';
+import { Collapse } from 'bootstrap';
 const success = Swal.mixin({
   toast: true,
   position: 'top-end',
@@ -162,7 +140,8 @@ const success = Swal.mixin({
 export default {
   data() {
     return {
-      carts: {}
+      carts: {},
+      navbar: null
     };
   },
   methods: {
@@ -183,10 +162,26 @@ export default {
         icon: 'success',
         title: '已成功訂閱漫途森旅！'
       });
+    },
+    navbarToggle() {
+      if (this.navbar._isShown) {
+        this.navbar.hide();
+      } else {
+        this.navbar.show();
+      }
     }
   },
   mounted() {
     this.getCart();
+    this.navbar = new Collapse(this.$refs.navbar, {
+      toggle: false
+    });
+    this.navbar.hide();
+
+    this.$router.beforeEach((to, from, next) => {
+      this.navbar.hide();
+      next();
+    });
   }
 };
 </script>

@@ -119,12 +119,10 @@
             </ul>
           </div>
 
-          <div class="text-end">
-            <a href="#" class="read-more english link-primary me-2">
-              <span class="pe-2">Read More </span>
-              <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-            </a>
-          </div>
+          <a href="#" class="read-more me-2 d-flex justify-content-end align-items-center">
+            <span class="pe-2 me-1 fs-7 ls-2 fw-normal">閱讀更多</span>
+            <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -174,17 +172,16 @@
                         {{ firstProduct.title }}
                       </h4>
                     </RouterLink>
-                    <div class="card-tags p-3">
-                      <a
-                        href="#"
-                        class="badge rounded-pill btn btn-primary text-white me-1"
+                    <div class="p-3">
+                      <span
+                        class="badge rounded-pill bg-primary text-white me-1"
                         v-for="(category, index) in firstProduct.category
                           ? firstProduct.category.split(',')
                           : []"
                         :key="'category' + index"
                       >
                         {{ `#${category}` }}
-                      </a>
+                      </span>
                     </div>
                     <p class="card-text fw-normal link-gray px-3">
                       {{ firstProduct.description }}
@@ -209,17 +206,14 @@
                           /位
                         </span>
                       </div>
-                      <div>
-                        <div class="text-end">
-                          <RouterLink
-                            :to="`/products/${firstProduct.id}`"
-                            class="read-more english link-primary me-4"
-                          >
-                            <span class="pe-2">Read More </span>
-                            <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-                          </RouterLink>
-                        </div>
-                      </div>
+
+                      <RouterLink
+                        :to="`/products/${firstProduct.id}`"
+                        class="read-more me-2 d-flex justify-content-end align-items-center"
+                      >
+                        <span class="me-1 fs-7 fw-normal ls-2">閱讀更多</span>
+                        <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
+                      </RouterLink>
                     </div>
                   </div>
                 </div>
@@ -243,17 +237,16 @@
                         {{ product.title }}
                       </h4>
                     </RouterLink>
-                    <div class="card-tags p-3">
-                      <a
-                        href="#"
-                        class="badge rounded-pill btn btn-primary text-white me-1"
+                    <div class="p-3">
+                      <span
+                        class="badge rounded-pill bg-primary text-white me-1"
                         v-for="(category, index) in product.category
                           ? product.category.split(',').slice(0, 3)
                           : []"
                         :key="'category' + index"
                       >
                         {{ `#${category}` }}
-                      </a>
+                      </span>
                     </div>
                     <p class="card-text fw-normal link-gray px-3">
                       {{ product.description }}
@@ -279,9 +272,9 @@
                         <div class="text-end">
                           <RouterLink
                             :to="`/products/${product.id}`"
-                            class="read-more english link-primary me-4"
+                            class="read-more me-2 d-flex justify-content-end align-items-center"
                           >
-                            <span class="pe-2">Read More </span>
+                            <span class="me-1 fs-7 fw-normal ls-2">閱讀更多</span>
                             <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
                           </RouterLink>
                         </div>
@@ -296,7 +289,7 @@
 
         <RouterLink
           to="/products"
-          class="read-all link-dark-green text-center border-top border-bottom border-1 py-5 d-block fs-4 ls-5"
+          class="read-all link-dark-green text-center border-top border-bottom border-1 py-5 d-flex justify-content-center align-items-center fs-4 ls-5"
         >
           <span class="pe-2">更多行程</span>
           <i class="read-all-icon bi bi-arrow-up-right-circle-fill"></i>
@@ -314,9 +307,13 @@
 
       <Swiper
         :slidesPerView="'auto'"
-        :centeredSlides="true"
         :spaceBetween="30"
-        :grabCursor="true"
+        :loop="true"
+        :centeredSlides="true"
+        :pagination="{
+          clickable: true
+        }"
+        :navigation="true"
         :modules="modules"
         class="area-swiper"
       >
@@ -374,7 +371,7 @@
       <div class="container my-5">
         <a
           href="#"
-          class="read-all link-dark-green text-center border-top border-bottom border-1 py-5 d-block fs-4 ls-5"
+          class="read-all link-dark-green text-center border-top border-bottom border-1 py-5 d-flex justify-content-center align-items-center fs-4 ls-5"
         >
           <span class="pe-2">所有森林</span>
           <i class="read-all-icon bi bi-arrow-up-right-circle-fill"></i>
@@ -386,10 +383,12 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const { VITE_URL, VITE_PATH } = import.meta.env;
 
@@ -400,10 +399,16 @@ export default {
   },
   data() {
     return {
-      modules: [Autoplay],
+      modules: [Autoplay, Pagination, Navigation],
       firstProduct: {},
       products: [],
-      isLoading: false
+      isLoading: false,
+      pagination: {
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + '</span>';
+        }
+      }
     };
   },
   mounted() {
