@@ -142,13 +142,13 @@ export default {
       let api = `${VITE_URL}/api/${VITE_PATH}/admin/product`;
       let http = 'post';
 
+      console.log(this.tempProduct);
+
       // 用 isNew 判斷是不是編輯
       if (!this.isNew) {
         api = `${VITE_URL}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`;
         http = 'put';
       }
-
-      console.log(http, api);
 
       this.isLoading = true;
 

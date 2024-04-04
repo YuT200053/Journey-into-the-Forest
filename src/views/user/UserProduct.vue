@@ -3,7 +3,7 @@
   <section class="product-banner img-box">
     <div
       class="product-banner-bg"
-      :style="{ 'background-image': 'url(' + product.imageUrl + ')' }"
+      :style="{ 'background-image': 'url(' + product.banner + ')' }"
     ></div>
     <div class="container">
       <div class="product-banner-title text-center w-100 py-4">
@@ -11,14 +11,13 @@
       </div>
 
       <div class="text-center mb-3">
-        <a
-          href="#"
-          class="badge rounded-pill btn btn-primary text-white me-1"
+        <span
+          class="badge rounded-pill bg-primary text-white me-1"
           v-for="(category, index) in product.category ? product.category.split(',') : []"
           :key="'category' + index"
         >
           {{ `#${category}` }}
-        </a>
+        </span>
       </div>
 
       <div class="text-center mb-5 fs-5">

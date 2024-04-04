@@ -9,7 +9,6 @@
         </div>
       </div>
     </section>
-
     <section class="products-journey container pb-6">
       <div class="row g-3 my-4">
         <div class="col-12 col-xl-6" v-for="product in products" :key="product.id">

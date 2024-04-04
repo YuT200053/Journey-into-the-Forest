@@ -49,6 +49,24 @@
                 />
               </div>
               <img class="w-100 mb-3" :src="tempProduct.imageUrl" :alt="tempProduct.title" />
+
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">輸入主要圖片網址</label
+                ><input
+                  type="text"
+                  id="imageUrl"
+                  class="form-control"
+                  placeholder="請輸入圖片連結"
+                  v-model="tempProduct.banner"
+                />
+              </div>
+              <img
+                v-if="tempProduct.banner"
+                class="w-100 mb-3"
+                :src="tempProduct.banner"
+                :alt="tempProduct.title + 'banner'"
+              />
+
               <!-- 更多圖片，先把所有圖片連結渲染出來 -->
               <div v-for="(img, key) in tempProduct.imagesUrl" :key="'img' + key">
                 <label for="imagesUrl" class="form-label">圖片網址</label>

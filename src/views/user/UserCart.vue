@@ -179,6 +179,8 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
+import cartStore from '../../stores/cartStore.js';
+import { mapState, mapActions } from 'pinia';
 import Swal from 'sweetalert2';
 const success = Swal.mixin({
   toast: true,

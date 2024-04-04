@@ -74,13 +74,13 @@
           <div class="text-muted mb-1 ls-2">立即訂閱，接收最新活動消息與優惠！</div>
 
           <VeeForm v-slot="{ errors }" @submit="addSub()" ref="form">
-            <div class="d-flex">
+            <div class="d-flex justify-content-lg-end flex-column flex-sm-row">
               <div class="me-1">
                 <VeeField
                   id="email"
                   name="email"
                   type="email"
-                  class="form-control input-width"
+                  class="form-control w-100"
                   :class="{ 'is-invalid': errors['email'] }"
                   placeholder="請輸入 Email"
                   rules="email|required"
