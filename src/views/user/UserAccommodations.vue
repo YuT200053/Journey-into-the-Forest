@@ -46,6 +46,8 @@
 </template>
 
 <script>
+const { VITE_BASE_URL } = import.meta.env;
+
 export default {
   data() {
     return {
@@ -57,7 +59,7 @@ export default {
     this.isLoading = true;
 
     this.axios
-      .get('/userAccommodations/userAccommodations.json')
+      .get(`${VITE_BASE_URL}userAccommodations/userAccommodations.json`)
       .then((res) => {
         console.log(res);
         this.accommodations = res.data;
