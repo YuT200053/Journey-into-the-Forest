@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-mutating-props -->
 <template>
   <div
     class="modal fade"
@@ -32,7 +31,7 @@
                   id="imageUrl"
                   class="form-control"
                   placeholder="請輸入圖片連結"
-                  v-model="tempProduct.imageUrl"
+                  v-model="tempProductData.imageUrl"
                 />
               </div>
               <!-- 上傳圖片 -->
@@ -48,27 +47,31 @@
                   @change="uploadImg"
                 />
               </div>
-              <img class="w-100 mb-3" :src="tempProduct.imageUrl" :alt="tempProduct.title" />
+              <img
+                class="w-100 mb-3"
+                :src="tempProductData.imageUrl"
+                :alt="tempProductData.title"
+              />
 
               <div class="mb-3">
-                <label for="imageUrl" class="form-label">輸入主要圖片網址</label
+                <label for="imageUrl" class="form-label">輸入 Banner 網址</label
                 ><input
                   type="text"
                   id="imageUrl"
                   class="form-control"
-                  placeholder="請輸入圖片連結"
-                  v-model="tempProduct.banner"
+                  placeholder="請輸入 Banner 連結"
+                  v-model="tempProductData.banner"
                 />
               </div>
               <img
-                v-if="tempProduct.banner"
+                v-if="tempProductData.banner"
                 class="w-100 mb-3"
-                :src="tempProduct.banner"
-                :alt="tempProduct.title + 'banner'"
+                :src="tempProductData.banner"
+                :alt="tempProductData.title + 'banner'"
               />
 
               <!-- 更多圖片，先把所有圖片連結渲染出來 -->
-              <div v-for="(img, key) in tempProduct.imagesUrl" :key="'img' + key">
+              <div v-for="(img, key) in tempProductData.imagesUrl" :key="'img' + key">
                 <label for="imagesUrl" class="form-label">圖片網址</label>
                 <!-- 渲染出第 key 個圖片連結 -->
                 <input
@@ -76,20 +79,20 @@
                   id="imagesUrl"
                   class="form-control mb-3"
                   placeholder="請輸入圖片連結"
-                  v-model="tempProduct.imagesUrl[key]"
+                  v-model="tempProductData.imagesUrl[key]"
                 />
                 <img v-if="img" class="w-100 mb-3" :src="img" :alt="'img' + key" />
               </div>
               <!-- 判斷出現哪個按鈕 -->
-              <!-- 新增：如果 imagesUrl 是空的，有最後一個值，則可以點擊 push 一個空值到 tempProduct.imagesUrl 中，換句話說救世會出現空的 input -->
+              <!-- 新增：如果 imagesUrl 是空的，有最後一個值，則可以點擊 push 一個空值到 tempProductData.imagesUrl 中，換句話說救世會出現空的 input -->
               <button
                 type="button"
                 class="btn btn-outline-primary w-100 mb-3"
                 v-if="
-                  !tempProduct.imagesUrl.length ||
-                  tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]
+                  !tempProductData.imagesUrl.length ||
+                  tempProductData.imagesUrl[tempProductData.imagesUrl.length - 1]
                 "
-                @click.prevent="tempProduct.imagesUrl.push('')"
+                @click.prevent="tempProductData.imagesUrl.push('')"
               >
                 新增圖片
               </button>
@@ -98,7 +101,7 @@
                 type="button"
                 class="btn btn-outline-danger w-100 mb-3"
                 v-else
-                @click.prevent="tempProduct.imagesUrl.pop()"
+                @click.prevent="tempProductData.imagesUrl.pop()"
               >
                 刪除圖片
               </button>
@@ -112,7 +115,7 @@
                     id="title"
                     class="form-control"
                     placeholder="請輸入標題"
-                    v-model="tempProduct.title"
+                    v-model="tempProductData.title"
                   />
                 </div>
                 <div class="col-6 mb-3">
@@ -122,7 +125,7 @@
                     id="category"
                     class="form-control"
                     placeholder="請輸入分類"
-                    v-model="tempProduct.category"
+                    v-model="tempProductData.category"
                   />
                 </div>
                 <div class="col-6 mb-3">
@@ -132,7 +135,7 @@
                     id="unit"
                     class="form-control"
                     placeholder="請輸入單位"
-                    v-model="tempProduct.unit"
+                    v-model="tempProductData.unit"
                   />
                 </div>
                 <div class="col-6 mb-3">
@@ -142,7 +145,7 @@
                     id="origin_price"
                     class="form-control"
                     placeholder="請輸入原價"
-                    v-model.number="tempProduct.origin_price"
+                    v-model.number="tempProductData.origin_price"
                     min="0"
                   />
                 </div>
@@ -153,7 +156,7 @@
                     id="price"
                     class="form-control"
                     placeholder="請輸入售價"
-                    v-model.number="tempProduct.price"
+                    v-model.number="tempProductData.price"
                     min="0"
                   />
                 </div>
@@ -167,7 +170,7 @@
                   class="form-control"
                   cols="30"
                   placeholder="請輸入產品描述"
-                  v-model="tempProduct.description"
+                  v-model="tempProductData.description"
                 ></textarea>
               </div>
               <div class="mb-3">
@@ -178,7 +181,7 @@
                   class="form-control"
                   cols="30"
                   placeholder="請輸入說明內容"
-                  v-model="tempProduct.content"
+                  v-model="tempProductData.content"
                 ></textarea>
               </div>
               <div class="mb-3">
@@ -186,7 +189,7 @@
                   type="checkbox"
                   id="is_enabled"
                   class="form-check-input me-1"
-                  v-model="tempProduct.is_enabled"
+                  v-model="tempProductData.is_enabled"
                 />
                 <label for="is_enabled" class="form-check-label">是否啟用</label>
               </div>
@@ -216,19 +219,25 @@ export default {
     return {
       editModal: '',
       isLoading: false,
-      fullPage: false
+      fullPage: false,
+      tempProductData: {
+        ...this.tempProduct
+      }
     };
   },
   props: ['tempProduct', 'isNew'],
   methods: {
     openModal() {
+      console.log(this.tempProduct);
+      this.tempProductData = { ...this.tempProduct };
       this.editModal.show();
     },
     hideModal() {
       this.editModal.hide();
     },
     editProduct() {
-      this.$emit('editProduct');
+      // 因是修改 tempProductData 因此要記得回傳
+      this.$emit('editProduct', this.tempProductData);
     },
     // 上傳檔案
     uploadImg() {
@@ -248,8 +257,7 @@ export default {
         .then((res) => {
           alert('圖片已上傳！');
           // 暫存資料的主要圖片變成目前上傳的照片
-          // eslint-disable-next-line vue/no-mutating-props
-          this.tempProduct.imageUrl = res.data.imageUrl;
+          this.tempProductData.imageUrl = res.data.imageUrl;
           // 清空資料
           this.$refs.uploadImg.value = '';
 

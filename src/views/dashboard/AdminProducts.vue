@@ -117,15 +117,23 @@ export default {
         this.tempProduct = {
           imagesUrl: []
         };
+
         // 初始化完成後，可用名稱直接叫
-        this.$refs.editModal.openModal();
+        this.$nextTick(() => {
+          this.$refs.editModal.openModal();
+        });
+
         this.isLoading = false;
       } else if (isNew === 'edit') {
         this.isNew = false;
         this.tempProduct = { ...item };
         // tempProduct.imagesUrl 要補上空陣列，否則沒有東西會出錯
         this.tempProduct.imagesUrl = this.tempProduct.imagesUrl || [];
-        this.$refs.editModal.openModal();
+
+        // this.$refs.editModal.openModal();
+        this.$nextTick(() => {
+          this.$refs.editModal.openModal();
+        });
 
         this.isLoading = false;
       } else if (isNew === 'delete') {
@@ -137,22 +145,22 @@ export default {
       }
     },
     // 判斷是編輯產品還是新增
-    editProduct() {
+    editProduct(tempProductData) {
       // 預設為新增產品
       let api = `${VITE_URL}/api/${VITE_PATH}/admin/product`;
       let http = 'post';
 
-      console.log(this.tempProduct);
+      console.log(tempProductData);
 
       // 用 isNew 判斷是不是編輯
       if (!this.isNew) {
-        api = `${VITE_URL}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`;
+        api = `${VITE_URL}/api/${VITE_PATH}/admin/product/${tempProductData.id}`;
         http = 'put';
       }
 
       this.isLoading = true;
 
-      axios[http](api, { data: this.tempProduct })
+      axios[http](api, { data: tempProductData })
         .then((res) => {
           alert(res.data.message);
           this.$refs.editModal.hideModal();

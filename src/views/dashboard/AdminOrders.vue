@@ -115,7 +115,10 @@ export default {
       this.isLoading = true;
 
       if (isView === 'view') {
-        this.$refs.orderModal.openModal();
+        this.$nextTick(() => {
+          this.$refs.orderModal.openModal();
+        });
+
         this.isLoading = false;
       } else if (isView === 'delete') {
         this.$refs.deleteModal.openModal();
