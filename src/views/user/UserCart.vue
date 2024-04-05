@@ -187,14 +187,13 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
-import cartStore from '../../stores/cartStore.js';
+import cartStore from '@/stores/cartStore.js';
 import { mapState, mapActions } from 'pinia';
 import { toast, question } from '@/mixins/swalToast.js';
 
 export default {
   data() {
     return {
-      carts: {},
       form: {
         user: {
           name: '',
@@ -203,28 +202,14 @@ export default {
           address: ''
         },
         message: ''
-      },
-      isLoading: false
+      }
     };
   },
+  computed: {
+    ...mapState(cartStore, ['carts', 'isLoading'])
+  },
   methods: {
-    getCart() {
-      const api = `${VITE_URL}/api/${VITE_PATH}/cart`;
-      this.isLoading = true;
-
-      this.axios
-        .get(api)
-        .then((res) => {
-          this.carts = res.data.data;
-          this.isLoading = false;
-        })
-        .catch(() => {
-          toast.fire({
-            icon: 'error',
-            title: '取得購物車列表失敗。'
-          });
-        });
-    },
+    ...mapActions(cartStore, ['getCart']),
     deleteModal(all, product) {
       if (all) {
         question
@@ -355,4 +340,3 @@ export default {
   color: #fff;
 }
 </style>
-@/mixins/swalToast.js

@@ -33,7 +33,7 @@
               <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3">
                 <i class="bi bi-bag me-1"></i>購物車
                 <span class="badge bg-danger rounded-pill">
-                  {{ carts.carts ? carts.carts.length : '' }}
+                  {{ carts.carts.length }}
                 </span>
               </RouterLink>
             </li>
@@ -110,29 +110,21 @@
 </template>
 
 <script>
-const { VITE_URL, VITE_PATH } = import.meta.env;
 import { Collapse } from 'bootstrap';
 import { toast } from '@/mixins/swalToast.js';
+import cartStore from '@/stores/cartStore.js';
+import { mapState } from 'pinia';
 
 export default {
   data() {
     return {
-      carts: {},
       navbar: null
     };
   },
+  computed: {
+    ...mapState(cartStore, ['carts'])
+  },
   methods: {
-    getCart() {
-      const api = `${VITE_URL}/api/${VITE_PATH}/cart`;
-      this.axios
-        .get(api)
-        .then((res) => {
-          this.carts = res.data.data;
-        })
-        .catch((err) => {
-          alert(err.response.data.message);
-        });
-    },
     addSub() {
       this.$refs.form.resetForm();
       toast.fire({
@@ -145,7 +137,6 @@ export default {
     }
   },
   mounted() {
-    this.getCart();
     this.navbar = new Collapse(this.$refs.navbar, { toggle: false });
 
     this.$router.beforeEach((to, from, next) => {
@@ -164,4 +155,3 @@ export default {
   max-height: 37.6px;
 }
 </style>
-@/mixins/swalToast.js
