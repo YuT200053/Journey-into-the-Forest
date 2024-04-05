@@ -47,6 +47,7 @@
 
 <script>
 const { VITE_BASE_URL } = import.meta.env;
+import { toast } from '@/mixins/swalToast.js';
 
 export default {
   data() {
@@ -61,13 +62,16 @@ export default {
     this.axios
       .get(`${VITE_BASE_URL}userAccommodations/userAccommodations.json`)
       .then((res) => {
-        console.log(res);
         this.accommodations = res.data;
         this.isLoading = false;
       })
       .catch(() => {
-        alert('找不到資料！');
+        toast.fire({
+          icon: 'error',
+          title: '找不到資料！'
+        });
       });
   }
 };
 </script>
+@/mixins/swalToast.js

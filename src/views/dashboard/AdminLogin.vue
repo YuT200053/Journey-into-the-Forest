@@ -37,6 +37,7 @@
 
 <script>
 import axios from 'axios';
+import { toast } from '@/mixins/swalToast.js';
 
 const { VITE_URL } = import.meta.env;
 
@@ -57,14 +58,21 @@ export default {
         .then((res) => {
           const { token, expired } = res.data;
           document.cookie = `yu-t-200053=${token};expires=${new Date(expired)};`;
-          alert(res.data.message);
+          toast.fire({
+            icon: 'success',
+            title: '成功登入！'
+          });
 
           this.$router.push('/admin/products');
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '請輸入正確帳號密碼。'
+          });
         });
     }
   }
 };
 </script>
+@/mixins/swalToast.js

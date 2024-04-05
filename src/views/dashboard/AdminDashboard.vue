@@ -17,6 +17,7 @@
 
 <script>
 import axios from 'axios';
+import { toast } from '@/mixins/swalToast.js';
 const { VITE_URL } = import.meta.env;
 
 export default {
@@ -44,14 +45,20 @@ export default {
             // 如果驗證成功再顯示畫面
             this.checkSuccess = true;
           })
-          .catch((err) => {
-            alert(err.response.data.message);
+          .catch(() => {
+            toast.fire({
+              icon: 'error',
+              title: '驗證失敗，請重新登入。'
+            });
             // 如果驗證失敗，跳回登入頁
             this.$router.push('/');
           });
       } else {
         // 如果沒有 token 則沒有登入，跳回登入頁
-        alert('您尚未登入');
+        toast.fire({
+          icon: 'error',
+          title: '您尚未登入。'
+        });
         this.$router.push('/');
       }
     },
@@ -59,7 +66,10 @@ export default {
       // 清除 cookie，token 和到期日都設為空
       document.cookie = 'yu-t-200053=;expires=;';
 
-      alert('token 已清除');
+      toast.fire({
+        icon: 'success',
+        title: 'token 已清除！'
+      });
       this.$router.push('/');
     }
   },
@@ -68,3 +78,4 @@ export default {
   }
 };
 </script>
+@/mixins/swalToast.js

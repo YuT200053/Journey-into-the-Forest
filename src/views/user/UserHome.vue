@@ -384,6 +384,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { toast } from '@/mixins/swalToast.js';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -422,9 +423,13 @@ export default {
         this.products = res.data.products.slice(1, 3);
         this.isLoading = false;
       })
-      .catch((err) => {
-        alert(err.Response.data.message);
+      .catch(() => {
+        toast.fire({
+          icon: 'error',
+          title: '取得產品列表失敗。'
+        });
       });
   }
 };
 </script>
+@/mixins/swalToast.js

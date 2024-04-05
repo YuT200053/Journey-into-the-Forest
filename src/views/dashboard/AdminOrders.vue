@@ -76,6 +76,7 @@ import axios from 'axios';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import OrderModal from '@/components/OrderModal.vue';
 import DeleteModal from '@/components/DeleteModal.vue';
+import { toast } from '@/mixins/swalToast.js';
 
 const { VITE_URL, VITE_PATH } = import.meta.env;
 
@@ -105,8 +106,11 @@ export default {
           this.pagination = res.data.pagination;
           this.isLoading = false;
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '取得訂單列表失敗。'
+          });
           this.isLoading = false;
         });
     },
@@ -135,14 +139,20 @@ export default {
 
       axios
         .put(api, { data: paid })
-        .then((res) => {
-          alert(res.data.message);
+        .then(() => {
+          toast.fire({
+            icon: 'success',
+            title: '成功付款資訊！'
+          });
           this.$refs.orderModal.hideModal();
           this.getOrders(this.pagination.current_page);
           this.isLoading = false;
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '修改付款資訊失敗。'
+          });
           this.isLoading = false;
         });
     },
@@ -152,14 +162,20 @@ export default {
 
       axios
         .delete(api)
-        .then((res) => {
-          alert(res.data.message);
+        .then((rs) => {
+          toast.fire({
+            icon: 'success',
+            title: '已成功刪除此訂單！'
+          });
           this.getOrders(this.pagination.current_page);
           this.$refs.deleteModal.hideModal();
           this.isLoading = false;
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '刪除訂單失敗。'
+          });
           this.isLoading = false;
         });
     }
@@ -169,3 +185,4 @@ export default {
   }
 };
 </script>
+@/mixins/swalToast.js

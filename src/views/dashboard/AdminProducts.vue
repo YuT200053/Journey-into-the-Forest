@@ -69,6 +69,7 @@ import axios from 'axios';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import EditModal from '@/components/EditModal.vue';
 import DeleteModal from '@/components/DeleteModal.vue';
+import { toast } from '@/mixins/swalToast.js';
 
 const { VITE_URL, VITE_PATH } = import.meta.env;
 
@@ -103,8 +104,11 @@ export default {
           this.pagination = res.data.pagination;
           this.isLoading = false;
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '取得產品列表失敗。'
+          });
           this.isLoading = false;
         });
     },
@@ -150,8 +154,6 @@ export default {
       let api = `${VITE_URL}/api/${VITE_PATH}/admin/product`;
       let http = 'post';
 
-      console.log(tempProductData);
-
       // 用 isNew 判斷是不是編輯
       if (!this.isNew) {
         api = `${VITE_URL}/api/${VITE_PATH}/admin/product/${tempProductData.id}`;
@@ -161,14 +163,20 @@ export default {
       this.isLoading = true;
 
       axios[http](api, { data: tempProductData })
-        .then((res) => {
-          alert(res.data.message);
+        .then(() => {
+          toast.fire({
+            icon: 'success',
+            title: '已成功新增/編輯產品！'
+          });
           this.$refs.editModal.hideModal();
           this.getProducts();
           this.isLoading = false;
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '新增/編輯產品失敗。'
+          });
           this.isLoading = false;
         });
     },
@@ -178,14 +186,20 @@ export default {
 
       axios
         .delete(api)
-        .then((res) => {
-          alert(res.data.message);
+        .then(() => {
+          toast.fire({
+            icon: 'success',
+            title: '已成功刪除此產品！'
+          });
           this.$refs.deleteModal.hideModal();
           this.getProducts();
           this.isLoading = false;
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '刪除此產品失敗。'
+          });
           this.isLoading = false;
         });
     }
@@ -195,3 +209,4 @@ export default {
   }
 };
 </script>
+@/mixins/swalToast.js

@@ -112,6 +112,7 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
+import { toast } from '@/mixins/swalToast.js';
 
 export default {
   data() {
@@ -133,8 +134,11 @@ export default {
           this.pagination = res.data.pagination;
           this.isLoading = false;
         })
-        .catch((err) => {
-          alert(err.Response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '取得產品列表失敗。'
+          });
         });
     }
   },
@@ -143,3 +147,4 @@ export default {
   }
 };
 </script>
+@/mixins/swalToast.js

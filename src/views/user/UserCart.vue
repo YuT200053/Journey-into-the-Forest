@@ -181,31 +181,7 @@
 const { VITE_URL, VITE_PATH } = import.meta.env;
 import cartStore from '../../stores/cartStore.js';
 import { mapState, mapActions } from 'pinia';
-import Swal from 'sweetalert2';
-const success = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  background: '#f4f9f3',
-  color: '#505843',
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.onmouseenter = Swal.stopTimer;
-    toast.onmouseleave = Swal.resumeTimer;
-  }
-});
-const question = Swal.mixin({
-  background: '#f4f9f3',
-  color: '#505843',
-  confirmButtonText: '確定',
-  confirmButtonColor: '#7d8b72',
-  showCancelButton: true,
-  cancelButtonText: '取消',
-  customClass: {
-    cancelButton: 'cancelBtn'
-  }
-});
+import { toast, question } from '@/mixins/swalToast.js';
 
 export default {
   data() {
@@ -234,8 +210,11 @@ export default {
           this.carts = res.data.data;
           this.isLoading = false;
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '取得購物車列表失敗。'
+          });
         });
     },
     deleteModal(all, product) {
@@ -266,19 +245,20 @@ export default {
     deleteCart(id) {
       const api = `${VITE_URL}/api/${VITE_PATH}/cart/${id}`;
 
-      console.log(id);
-
       this.axios
         .delete(api)
         .then(() => {
           this.getCart();
-          success.fire({
+          toast.fire({
             icon: 'success',
             title: '已刪除此產品！'
           });
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '刪除產品失敗。'
+          });
         });
     },
     deleteAll() {
@@ -288,13 +268,16 @@ export default {
         .delete(api)
         .then(() => {
           this.getCart();
-          success.fire({
+          toast.fire({
             icon: 'success',
             title: '已清空購物車！'
           });
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '清空購物車失敗。'
+          });
         });
     },
     changeQty(cart, qty) {
@@ -308,13 +291,16 @@ export default {
         .put(api, { data: order })
         .then(() => {
           this.getCart();
-          success.fire({
+          toast.fire({
             icon: 'success',
             title: '已更新產品數量！'
           });
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '產品數量更新失敗。'
+          });
         });
     },
     createOrder() {
@@ -324,15 +310,18 @@ export default {
       this.axios
         .post(api, { data: order })
         .then(() => {
-          success.fire({
+          toast.fire({
             icon: 'success',
             title: '已成功送出訂單！'
           });
           // 送出訂單後，導回首頁
           this.$router.push('/');
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '訂單送出失敗。'
+          });
         });
     },
     isPhone(value) {
@@ -358,3 +347,4 @@ export default {
   color: #fff;
 }
 </style>
+@/mixins/swalToast.js

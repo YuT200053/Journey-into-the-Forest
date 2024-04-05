@@ -111,21 +111,8 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
-import Swal from 'sweetalert2';
 import { Collapse } from 'bootstrap';
-const success = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  background: '#f4f9f3',
-  color: '#505843',
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.onmouseenter = Swal.stopTimer;
-    toast.onmouseleave = Swal.resumeTimer;
-  }
-});
+import { toast } from '@/mixins/swalToast.js';
 
 export default {
   data() {
@@ -148,7 +135,7 @@ export default {
     },
     addSub() {
       this.$refs.form.resetForm();
-      success.fire({
+      toast.fire({
         icon: 'success',
         title: '已成功訂閱漫途森旅！'
       });
@@ -177,3 +164,4 @@ export default {
   max-height: 37.6px;
 }
 </style>
+@/mixins/swalToast.js

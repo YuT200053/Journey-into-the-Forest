@@ -128,20 +128,7 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
-import Swal from 'sweetalert2';
-const success = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  background: '#f4f9f3',
-  color: '#505843',
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.onmouseenter = Swal.stopTimer;
-    toast.onmouseleave = Swal.resumeTimer;
-  }
-});
+import { toast } from '@/mixins/swalToast.js';
 
 export default {
   data() {
@@ -159,13 +146,16 @@ export default {
       this.axios
         .post(api, { data: order })
         .then(() => {
-          success.fire({
+          toast.fire({
             icon: 'success',
             title: '已加入購物車！'
           });
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          toast.fire({
+            icon: 'error',
+            title: '加入購物車失敗。'
+          });
         });
     }
   },
@@ -180,9 +170,13 @@ export default {
         this.product = res.data.product;
         this.isLoading = false;
       })
-      .catch((err) => {
-        alert(err.Response.data.message);
+      .catch(() => {
+        toast.fire({
+          icon: 'error',
+          title: '取得產品資訊失敗。'
+        });
       });
   }
 };
 </script>
+@/mixins/swalToast.js
