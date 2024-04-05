@@ -113,7 +113,7 @@
 import { Collapse } from 'bootstrap';
 import { toast } from '@/mixins/swalToast.js';
 import cartStore from '@/stores/cartStore.js';
-import { mapState } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 
 export default {
   data() {
@@ -125,6 +125,7 @@ export default {
     ...mapState(cartStore, ['carts'])
   },
   methods: {
+    ...mapActions(cartStore, ['getCart']),
     addSub() {
       this.$refs.form.resetForm();
       toast.fire({
@@ -143,6 +144,8 @@ export default {
       this.navbar.hide();
       next();
     });
+
+    this.getCart();
   }
 };
 </script>

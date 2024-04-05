@@ -307,8 +307,8 @@ export default {
             icon: 'success',
             title: '已成功送出訂單！'
           });
-          // 送出訂單後，導回首頁
-          this.$router.push('/');
+
+          this.$router.push('/order');
         })
         .catch(() => {
           toast.fire({

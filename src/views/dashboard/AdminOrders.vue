@@ -6,6 +6,7 @@
       <thead>
         <tr>
           <td>購買時間</td>
+          <td>購買人姓名</td>
           <td width="25%">Email</td>
           <td width="25%">購買款項</td>
           <td>應付金額</td>
@@ -17,11 +18,12 @@
         <tr v-for="order in orders" :key="order.id">
           <!-- 將 create_at 轉換為時間，要記得乘 1000，並轉換為當地時間格式 -->
           <td>{{ new Date(order.create_at * 1000).toLocaleDateString() }}</td>
+          <td>{{ order.user.name }}</td>
           <td>{{ order.user.email }}</td>
           <td>
             <ul class="list-unstyled">
               <li v-for="product in order.products" :key="product.id">
-                {{ product.product.title }} {{ product.qty }} {{ product.product.unit }}
+                {{ product.product.title }} {{ product.qty }} 張
               </li>
             </ul>
           </td>
@@ -162,7 +164,7 @@ export default {
 
       axios
         .delete(api)
-        .then((rs) => {
+        .then(() => {
           toast.fire({
             icon: 'success',
             title: '已成功刪除此訂單！'

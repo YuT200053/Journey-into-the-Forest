@@ -83,8 +83,8 @@
               <table class="table">
                 <tr v-for="product in tempOrderData.products" :key="product.id">
                   <th>{{ product.product.title }}</th>
-                  <td>{{ product.qty }} / {{ product.product.unit }}</td>
-                  <td>{{ product.total }}</td>
+                  <td>{{ product.qty }} / 張</td>
+                  <td>$ {{ product.total }}</td>
                 </tr>
               </table>
               <div class="form-check d-flex justify-content-end">
