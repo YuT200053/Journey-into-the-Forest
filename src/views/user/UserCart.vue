@@ -127,7 +127,7 @@
               <VeeField
                 id="tel"
                 name="電話"
-                type="number"
+                type="tel"
                 class="form-control"
                 :class="{ 'is-invalid': errors['電話'] }"
                 placeholder="請輸入電話"
@@ -326,7 +326,11 @@ export default {
     },
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
-      return phoneNumber.test(value) ? true : '請正確的手機號碼';
+      if (value.length === 0) {
+        return '電話 為必填';
+      } else {
+        return phoneNumber.test(value) ? true : '請正確的手機號碼';
+      }
     }
   },
   mounted() {
