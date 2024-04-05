@@ -131,7 +131,7 @@
                 class="form-control"
                 :class="{ 'is-invalid': errors['電話'] }"
                 placeholder="請輸入電話"
-                :rules="isPhone"
+                :rules="{ required: true, max: 10, min: 8 }"
                 v-model="form.user.tel"
               />
               <label for="tel">收件人電話</label>
@@ -326,11 +326,7 @@ export default {
     },
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
-      if (value.length === 0) {
-        return '電話 為必填';
-      } else {
-        return phoneNumber.test(value) ? true : '請正確的手機號碼';
-      }
+      return phoneNumber.test(value) ? true : '請正確的手機號碼';
     }
   },
   mounted() {
