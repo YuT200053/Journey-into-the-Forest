@@ -11,8 +11,15 @@
 
   <section class="container mb-7">
     <!-- if cart is empty -->
-    <div class="text-center text-muted" role="alert" v-if="carts.carts ? !carts.carts.length : 0">
-      <i class="bi bi-stars me-1"></i>目前購物車是空的，趕快加入你的漫遊行程吧！
+    <div
+      class="d-flex flex-column align-items-center text-muted"
+      role="alert"
+      v-if="carts.carts ? !carts.carts.length : 0"
+    >
+      目前購物車是空的，趕快加入你的漫遊行程吧！
+      <router-link to="/products" class="btn btn-primary text-white mt-1">
+        <i class="bi bi-stars me-1"></i>立即尋找專屬行程
+      </router-link>
     </div>
 
     <div class="row">
@@ -22,14 +29,6 @@
           v-for="product in carts.carts"
           :key="product.id"
         >
-          <button
-            type="button"
-            class="btn ps-0"
-            :disabled="isLoading"
-            @click.prevent="deleteModal(false, product)"
-          >
-            <i class="bi bi-x-lg"></i>
-          </button>
           <div class="row gx-2 align-items-center">
             <div class="col-12 col-sm-3 mb-1 mb-sm-0">
               <img
@@ -68,6 +67,15 @@
               小計 ${{ product.total ? product.total.toLocaleString('en-US') : '' }}
             </div>
           </div>
+          <button
+            type="button"
+            class="btn ps-3"
+            :disabled="isLoading"
+            @click.prevent="deleteModal(false, product)"
+            title="刪除此行程"
+          >
+            <i class="bi bi-x-lg"></i>
+          </button>
         </div>
 
         <div
