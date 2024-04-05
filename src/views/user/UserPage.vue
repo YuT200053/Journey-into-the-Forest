@@ -11,16 +11,7 @@
           />
         </RouterLink>
         <!-- burger list -->
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbar"
-          aria-controls="navbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          @click.prevent="navbarToggle()"
-        >
+        <button class="navbar-toggler border-0" type="button" @click.prevent="navbarToggle()">
           <i class="bi bi-list fs-1 burger"></i>
         </button>
 
@@ -120,7 +111,6 @@
 
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
-// import { Collapse } from 'bootstrap';
 import Swal from 'sweetalert2';
 import { Collapse } from 'bootstrap';
 const success = Swal.mixin({
@@ -164,19 +154,12 @@ export default {
       });
     },
     navbarToggle() {
-      if (this.navbar._isShown) {
-        this.navbar.hide();
-      } else {
-        this.navbar.show();
-      }
+      this.navbar.toggle();
     }
   },
   mounted() {
     this.getCart();
-    this.navbar = new Collapse(this.$refs.navbar, {
-      toggle: false
-    });
-    this.navbar.hide();
+    this.navbar = new Collapse(this.$refs.navbar, { toggle: false });
 
     this.$router.beforeEach((to, from, next) => {
       this.navbar.hide();
