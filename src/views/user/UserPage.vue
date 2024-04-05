@@ -32,7 +32,7 @@
             <li class="nav-item px-3 py-2 py-lg-0">
               <RouterLink to="/cart" class="btn btn-primary text-white ms-lg-3">
                 <i class="bi bi-bag me-1"></i>購物車
-                <span class="badge bg-danger rounded-pill">
+                <span class="badge bg-danger rounded-pill" v-if="carts.carts">
                   {{ carts.carts.length }}
                 </span>
               </RouterLink>
