@@ -358,9 +358,6 @@ export default {
     Swiper,
     SwiperSlide
   },
-  computed: {
-    ...mapState(newsStore, ['news', 'isLoading'])
-  },
   data() {
     return {
       modules: [Autoplay, Pagination, Navigation],
@@ -376,14 +373,23 @@ export default {
       newsList: {}
     };
   },
+  computed: {
+    ...mapState(newsStore, ['news'])
+  },
   methods: {
     ...mapActions(newsStore, ['getNews'])
   },
   mounted() {
     const api = `${VITE_URL}/api/${VITE_PATH}/products`;
     this.isLoading = true;
-    this.getNews();
-    this.newsList = this.news.slice(0, 5);
+    this.getNews().then(() => {
+      // 使用 $nextTick() 等待 DOM 更新完成後執行操作
+      this.$nextTick(() => {
+        console.log('News updated:', this.news);
+        this.newsList = this.news.slice(0, 5);
+        console.log(this.news);
+      });
+    });
 
     this.axios
       .get(api)
@@ -401,4 +407,3 @@ export default {
   }
 };
 </script>
-@/mixins/swalToast.js

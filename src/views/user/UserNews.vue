@@ -40,13 +40,14 @@ import { mapState, mapActions } from 'pinia';
 
 export default {
   computed: {
-    ...mapState(newsStore, ['news', 'isLoading'])
+    ...mapState(newsStore, ['news'])
   },
   methods: {
     ...mapActions(newsStore, ['getNews'])
   },
   mounted() {
     this.getNews();
+    console.log(this.news);
   }
 };
 </script>
