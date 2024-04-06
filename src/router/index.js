@@ -42,6 +42,11 @@ const router = createRouter({
           name: 'accommodations',
           component: () => import('../views/user/UserAccommodations.vue')
         },
+        {
+          path: 'news',
+          name: 'news',
+          component: () => import('../views/user/UserNews.vue')
+        },
         // 404 頁面
         {
           path: ':pathMatch(.*)*',

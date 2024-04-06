@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbar" ref="navbar">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
             <li class="nav-item px-3 border-end-lg border-1 py-2">
-              <a class="nav-link" href="#">最新消息</a>
+              <RouterLink to="/news" class="nav-link" href="#">最新消息</RouterLink>
             </li>
             <li class="nav-item px-3 border-end-lg border-1 py-2">
               <RouterLink to="/products" class="nav-link">漫遊行程</RouterLink>

@@ -42,87 +42,45 @@
 
         <div class="news p-5">
           <div>
-            <h3 class="title mb-0">最新消息</h3>
-            <span class="english fs-5 title">NEWS</span>
+            <h3 class="title mb-0">步道最新消息</h3>
+            <span class="english fs-5 title">Trails News</span>
           </div>
 
           <div class="news-link my-4">
-            <ul>
-              <li>
-                <a href="#" class="fs-7 ls-2 fw-normal d-flex flex-column flex-md-row mb-3">
-                  <!-- sm 時分兩行，flex-shrink 保持本身大小 -->
-                  <div
-                    class="d-flex flex-shrink-0 justify-content-between news-link-date link-gray me-3"
-                  >
-                    <span class="english">2024.02.26</span>
-                    <span class="fw-bold link-dark-green">公告</span>
+            <ul class="mb-0">
+              <li
+                class="news-list-li fs-7 ls-2 fw-normal mb-3"
+                v-for="news in newsList"
+                :key="news.TRAILID"
+              >
+                <div class="d-flex flex-column flex-lg-row align-items-start">
+                  <div class="news-list-date english text-primary me-3 mb-1 mb-lg-0">
+                    {{ news.ANN_DATE.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3') }}
                   </div>
-                  <div class="news-link-text link-gray">
-                    加里山登山步道大坪支線因修繕工程自 3 月 4 日起至 3 月 29
-                    日暫時封閉，請山友提前改道或繞道通行
+                  <span class="badge rounded-pill bg-primary me-3 mb-1 mb-lg-0">
+                    {{ news.TR_TYP }}
+                  </span>
+                  <div>
+                    <span class="news-list-title fw-bold text-dark-green">
+                      {{ news.TR_CNAME }}
+                    </span>
+                    <br />
+                    <span class="news-list-content text-muted">
+                      {{ news.TITLE }}
+                    </span>
                   </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="fs-7 ls-2 fw-normal d-flex flex-column flex-md-row mb-3">
-                  <div
-                    class="d-flex flex-shrink-0 justify-content-between news-link-date link-gray me-3"
-                  >
-                    <span class="english">2024.02.23</span>
-                    <span class="fw-bold link-dark-green">活動</span>
-                  </div>
-                  <div class="news-link-text link-gray">
-                    「林林盡致 / 山林有色-無牆展演系列二：烏來台車職人 & 旅人圖鑑」特展 歡迎前往參觀
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="fs-7 ls-2 fw-normal d-flex flex-column flex-md-row mb-3">
-                  <div
-                    class="d-flex flex-shrink-0 justify-content-between news-link-date link-gray me-3"
-                  >
-                    <span class="english">2024.02.23</span>
-                    <span class="fw-bold link-dark-green">活動</span>
-                  </div>
-                  <div class="news-link-text link-gray">
-                    迎接浪漫春日，大雪山霧社櫻盛放~
-                    遊客中心試營運，快來文創賣店把森林精選好物帶回家！
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="fs-7 ls-2 fw-normal d-flex flex-column flex-md-row mb-3">
-                  <div
-                    class="d-flex flex-shrink-0 justify-content-between news-link-date link-gray me-3"
-                  >
-                    <span class="english">2024.02.22</span>
-                    <span class="fw-bold link-dark-green">公告</span>
-                  </div>
-                  <div class="news-link-text link-gray">
-                    大鹿林道 22K - 24.5K 自 113 年 2 月 17 日起實施交通管制
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="fs-7 ls-2 fw-normal d-flex flex-column flex-md-row mb-3">
-                  <div
-                    class="d-flex flex-shrink-0 justify-content-between news-link-date link-gray me-3"
-                  >
-                    <span class="english">2024.02.21</span>
-                    <span class="fw-bold link-dark-green">公告</span>
-                  </div>
-                  <div class="news-link-text link-gray">
-                    熱血志工照過來，步道手作等您來挽袖-林業及自然保育署新竹分署環境維護志工召募開始報名
-                  </div>
-                </a>
+                </div>
               </li>
             </ul>
           </div>
 
-          <a href="#" class="read-more me-2 d-flex justify-content-end align-items-center">
+          <RouterLink
+            to="/news"
+            class="read-more me-2 d-flex justify-content-end align-items-center"
+          >
             <span class="pe-2 me-1 fs-7 ls-2 fw-normal">閱讀更多</span>
             <i class="read-more-icon bi bi-arrow-up-right-circle-fill"></i>
-          </a>
+          </RouterLink>
         </div>
       </div>
     </section>
@@ -385,6 +343,8 @@
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { toast } from '@/mixins/swalToast.js';
+import newsStore from '@/stores/newsStore.js';
+import { mapState, mapActions } from 'pinia';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -398,6 +358,9 @@ export default {
     Swiper,
     SwiperSlide
   },
+  computed: {
+    ...mapState(newsStore, ['news', 'isLoading'])
+  },
   data() {
     return {
       modules: [Autoplay, Pagination, Navigation],
@@ -409,12 +372,18 @@ export default {
         renderBullet: function (index, className) {
           return '<span class="' + className + '">' + (index + 1) + '</span>';
         }
-      }
+      },
+      newsList: {}
     };
+  },
+  methods: {
+    ...mapActions(newsStore, ['getNews'])
   },
   mounted() {
     const api = `${VITE_URL}/api/${VITE_PATH}/products`;
     this.isLoading = true;
+    this.getNews();
+    this.newsList = this.news.slice(0, 5);
 
     this.axios
       .get(api)

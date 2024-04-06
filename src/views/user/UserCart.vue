@@ -17,9 +17,9 @@
       v-if="carts.carts ? !carts.carts.length : 0"
     >
       目前購物車是空的，趕快加入你的漫遊行程吧！
-      <router-link to="/products" class="btn btn-primary text-white mt-1">
+      <RouterLink to="/products" class="btn btn-primary text-white mt-1">
         <i class="bi bi-stars me-1"></i>立即尋找專屬行程
-      </router-link>
+      </RouterLink>
     </div>
 
     <div class="row">

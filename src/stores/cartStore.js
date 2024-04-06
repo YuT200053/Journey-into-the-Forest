@@ -5,8 +5,6 @@ import { toast } from '@/mixins/swalToast.js';
 const { VITE_URL, VITE_PATH } = import.meta.env;
 
 export default defineStore('cartStore', {
-  // data, methods, computed
-  // state, action, getters
   state: () => {
     return {
       carts: [],
