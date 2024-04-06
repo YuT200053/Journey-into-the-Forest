@@ -156,6 +156,7 @@ export default {
             icon: 'success',
             title: '已加入購物車！'
           });
+          this.getCart();
         })
         .catch(() => {
           toast.fire({
@@ -169,6 +170,7 @@ export default {
     const { id } = this.$route.params;
     const api = `${VITE_URL}/api/${VITE_PATH}/product/${id}`;
     this.isLoading = true;
+    this.getCart();
 
     this.axios
       .get(api)

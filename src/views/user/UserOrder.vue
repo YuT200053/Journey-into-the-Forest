@@ -45,11 +45,15 @@
               <span class="text-dark-green">{{ user.address }}</span>
             </div>
             <div class="mb-3">
+              付款總額<br />
+              <span class="text-dark-green">$ {{ totalPrice.toLocaleString('en-US') }}</span>
+            </div>
+            <div class="mb-3">
               付款後五碼<br />
               <span class="text-dark-green">{{ user.pay }}</span>
             </div>
             <div class="text-end">
-              <span class="text-muted fs-7">訂單編號：{{ orderId }}</span>
+              <span class="text-muted fs-7 fw-normal">訂單編號：{{ orderId }}</span>
             </div>
           </div>
         </div>
@@ -74,12 +78,12 @@
                   </a>
                   <br />
                   <span class="text-dark-green">
-                    $ {{ product.product.price.toLocaleString('en-US') }} / 張
+                    $ {{ product.product.price.toLocaleString('en-US') }}
                   </span>
                   <div class="text-muted">共 {{ product.qty }} 張</div>
                 </div>
                 <div class="text-end">
-                  <button type="button" class="btn btn-outline-primary btn-sm">
+                  <button type="button" class="btn btn-outline-dark-green btn-sm">
                     <i class="bi bi-telephone-forward me-1"></i>立即預約行程
                   </button>
                 </div>
@@ -132,7 +136,8 @@ export default {
     return {
       orderId: '',
       user: {},
-      products: {}
+      products: {},
+      totalPrice: ''
     };
   },
   mounted() {
@@ -141,9 +146,11 @@ export default {
     this.axios
       .get(api)
       .then((res) => {
-        this.user = res.data.orders[0].user;
-        this.products = Object.values(res.data.orders[0].products);
-        this.orderId = res.data.orders[0].id;
+        const order = res.data.orders[0];
+        this.user = order.user;
+        this.products = Object.values(order.products);
+        this.orderId = order.id;
+        this.totalPrice = order.total;
       })
       .catch(() => {
         toast.fire({
