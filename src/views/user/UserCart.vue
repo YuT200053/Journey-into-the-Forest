@@ -106,16 +106,16 @@
             <div class="form-floating mb-3">
               <VeeField
                 id="email"
-                name="email"
+                name="電子信箱"
                 type="email"
                 class="form-control"
-                :class="{ 'is-invalid': errors['email'] }"
-                placeholder="請輸入 Email"
+                :class="{ 'is-invalid': errors['電子信箱'] }"
+                placeholder="請輸入電子信箱"
                 rules="email|required"
                 v-model="form.user.email"
               />
-              <label for="email">Email</label>
-              <ErrorMessage name="email" class="invalid-feedback" />
+              <label for="email">電子信箱</label>
+              <ErrorMessage name="電子信箱" class="invalid-feedback" />
             </div>
             <div class="form-floating mb-3">
               <VeeField
@@ -128,7 +128,7 @@
                 rules="required"
                 v-model="form.user.name"
               />
-              <label for="name">收件人姓名</label>
+              <label for="name">姓名</label>
               <ErrorMessage name="姓名" class="invalid-feedback" />
             </div>
             <div class="form-floating mb-3">
@@ -142,7 +142,7 @@
                 :rules="{ required: true, max: 10, min: 8 }"
                 v-model="form.user.tel"
               />
-              <label for="tel">收件人電話</label>
+              <label for="tel">聯繫電話</label>
               <ErrorMessage name="電話" class="invalid-feedback" />
             </div>
             <div class="form-floating mb-3">
@@ -156,8 +156,22 @@
                 rules="required"
                 v-model="form.user.address"
               />
-              <label for="address">收件人地址</label>
+              <label for="address">聯繫地址</label>
               <ErrorMessage name="地址" class="invalid-feedback" />
+            </div>
+            <div class="form-floating mb-3">
+              <VeeField
+                id="pay"
+                name="付款後五碼"
+                type="number"
+                class="form-control"
+                :class="{ 'is-invalid': errors['付款後五碼'] }"
+                placeholder="請輸入付款後五碼"
+                rules="required|min:5|max:5"
+                v-model="form.user.pay"
+              />
+              <label for="pay">付款銀行帳號後五碼</label>
+              <ErrorMessage name="付款後五碼" class="invalid-feedback" />
             </div>
             <div class="form-floating mb-3">
               <textarea

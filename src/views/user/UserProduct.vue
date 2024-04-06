@@ -129,6 +129,8 @@
 <script>
 const { VITE_URL, VITE_PATH } = import.meta.env;
 import { toast } from '@/mixins/swalToast.js';
+import cartStore from '@/stores/cartStore.js';
+import { mapActions, mapState } from 'pinia';
 
 export default {
   data() {
@@ -138,7 +140,11 @@ export default {
       isLoading: false
     };
   },
+  computed: {
+    ...mapState(cartStore, ['carts'])
+  },
   methods: {
+    ...mapActions(cartStore, ['getCart']),
     addCart(product_id, qty = 1) {
       const order = { product_id, qty };
       const api = `${VITE_URL}/api/${VITE_PATH}/cart`;
