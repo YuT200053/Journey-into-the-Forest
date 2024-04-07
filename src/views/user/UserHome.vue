@@ -23,12 +23,12 @@
             </RouterLink>
           </div>
           <div class="col-12 col-lg-4">
-            <a href="#" class="link-secondary text-center fs-3">
+            <RouterLink to="/area" class="link-secondary text-center fs-3">
               <div class="img-box">
                 <img src="/userHome/ticket.png" alt="票券" />
-                <div class="banner-list-text">票 券</div>
+                <div class="banner-list-text">所 有 森 林</div>
               </div>
-            </a>
+            </RouterLink>
           </div>
           <div class="col-12 col-lg-4">
             <RouterLink to="/accommodations" class="link-secondary text-center fs-3">
@@ -387,7 +387,6 @@ export default {
       this.$nextTick(() => {
         console.log('News updated:', this.news);
         this.newsList = this.news.slice(0, 5);
-        console.log(this.news);
       });
     });
 

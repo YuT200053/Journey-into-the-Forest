@@ -1,11 +1,14 @@
 <template>
-  <!-- <VueLoading :active="isLoading" /> -->
+  <VueLoading :active="isLoading" />
   <section class="news-banner img-box mb-4">
     <div class="container">
       <div class="news-banner-title text-center w-100">
         <h1 class="title mb-0">步道最新消息</h1>
         <span class="english fs-5 title">Trails News</span>
       </div>
+      <p class="fs-7 fw-normal text-center text-muted">
+        僅提供目前有狀況之步道路況，步道路況為正常則不顯示
+      </p>
     </div>
   </section>
 

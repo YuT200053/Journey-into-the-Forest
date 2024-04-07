@@ -47,6 +47,18 @@ const router = createRouter({
           name: 'news',
           component: () => import('../views/user/UserNews.vue')
         },
+        {
+          path: 'areas',
+          name: 'areas',
+          component: () => import('../views/user/UserAreas.vue'),
+          children: [
+            {
+              path: ':id',
+              component: () => import('../views/user/UserArea.vue')
+            }
+          ]
+        },
+
         // 404 頁面
         {
           path: ':pathMatch(.*)*',
