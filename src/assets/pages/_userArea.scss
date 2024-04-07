@@ -10,3 +10,13 @@
     object-position: center center;
   }
 }
+
+.area-information {
+  li {
+    @include zoom(0.2s);
+
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+}

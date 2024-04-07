@@ -20,12 +20,12 @@
         >
           <option value="0" disabled selected>今天，你想去哪座森林？</option>
           <option value="1">太平山國家森林遊樂區</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="2">滿月圓國家森林遊樂區</option>
+          <option value="3">內洞國家森林遊樂區</option>
         </select>
       </div>
 
-      <div class="area-info p-5" v-if="area !== '0'"><router-view /></div>
+      <div class="area-info p-4 p-lg-5" v-if="area !== '0'"><router-view /></div>
     </div>
   </section>
 </template>
@@ -40,7 +40,6 @@ export default {
   methods: {
     changeArea() {
       this.$router.push(`/areas/${this.area}`);
-      console.log(this.area);
     }
   }
 };
