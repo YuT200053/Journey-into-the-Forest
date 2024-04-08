@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <div class="px-4 px-lg-6 py-6">
+    <div class="px-4 px-lg-6 py-5 py-md-6">
       <div class="d-flex justify-content-center justify-content-md-start fs-4 mb-3">
         <a href="https://www.facebook.com/" class="link-dark-green footer-icon">
           <i class="bi bi-facebook"></i>

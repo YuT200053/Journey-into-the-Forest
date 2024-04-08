@@ -86,7 +86,9 @@
               </td>
 
               <td class="fw-normal">
-                <span v-for="(memo, index) in fee.feeMemo.split(';')" :key="'memo' + index"
+                <span
+                  v-for="(memo, index) in fee.feeMemo ? fee.feeMemo.split(';') : ''"
+                  :key="'memo' + index"
                   >{{ memo }}<br
                 /></span>
               </td>
@@ -121,7 +123,6 @@ export default {
         .get(`userAreas/userAreas.json`)
         .then((res) => {
           this.area = res.data.find((area) => area.id == id);
-          console.log(this.area);
         })
         .catch(() => {
           toast.fire({

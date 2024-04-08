@@ -1,7 +1,7 @@
 <template>
   <main>
     <VueLoading :active="isLoading" />
-    <section class="banner img-box mb-6">
+    <section class="banner img-box mb-5 mb-sm-6">
       <div class="container">
         <div class="text-center mb-5">
           <img src="/logo/logo.png" alt="漫途森旅" class="object-fit-cover mb-5 banner-logo" />
@@ -85,7 +85,7 @@
       </div>
     </section>
 
-    <section class="journey pb-7 bg-secondary">
+    <section class="journey pb-5 pb-sm-7 bg-secondary">
       <div class="journey-text">
         <Swiper
           :slidesPerView="'auto'"
@@ -255,7 +255,7 @@
       </div>
     </section>
 
-    <section class="area pb-8 bg-secondary">
+    <section class="area pb-5 pb-sm-7 bg-secondary">
       <div class="area-bg text-center">
         <div class="area-title">
           <h3 class="title mb-0 text-light-green">今天，你想去哪座森林？</h3>

@@ -22,6 +22,13 @@
           <option value="1">太平山國家森林遊樂區</option>
           <option value="2">滿月圓國家森林遊樂區</option>
           <option value="3">內洞國家森林遊樂區</option>
+          <option value="4">東眼山國家森林遊樂區</option>
+          <option value="5">觀霧國家森林遊樂區</option>
+          <option value="6">拉拉山國家森林遊樂區</option>
+          <option value="7">武陵國家森林遊樂區</option>
+          <option value="8">八仙山國家森林遊樂區</option>
+          <option value="9">大雪山國家森林遊樂區</option>
+          <option value="10">合歡山國家森林遊樂區</option>
         </select>
       </div>
 
