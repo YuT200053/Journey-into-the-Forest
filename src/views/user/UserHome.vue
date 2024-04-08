@@ -327,13 +327,13 @@
       </Swiper>
 
       <div class="container my-5">
-        <a
-          href="#"
+        <RouterLink
+          to="/areas"
           class="read-all link-dark-green text-center border-top border-bottom border-1 py-5 d-flex justify-content-center align-items-center fs-4 ls-5"
         >
           <span class="pe-2">所有森林</span>
           <i class="read-all-icon bi bi-arrow-up-right-circle-fill"></i>
-        </a>
+        </RouterLink>
       </div>
     </section>
   </main>

@@ -12,7 +12,7 @@
 
       <div class="text-center mb-3">
         <span
-          class="badge rounded-pill bg-primary text-white me-1"
+          class="badge rounded-pill bg-primary text-white me-1 mb-1 mb-sm-0"
           v-for="(category, index) in product.category ? product.category.split(',') : []"
           :key="'category' + index"
         >
@@ -20,7 +20,7 @@
         </span>
       </div>
 
-      <div class="text-center mb-5 fs-5">
+      <div class="text-center mb-4 mb-sm-5 fs-5">
         <a href="#" class="link-dark-green">
           <i class="bi bi-geo-alt-fill me-1"></i>{{ product.unit }}
         </a>
@@ -31,7 +31,7 @@
   <section class="container pb-5">
     <div class="row">
       <div class="col-12 col-lg-7">
-        <div class="product-description p-5 mx-auto mb-5">
+        <div class="product-description p-5 mx-auto mb-4 mb-sm-5">
           <div>
             <h3 class="title mb-0">行程亮點</h3>
             <span class="english fs-5 title">Features</span>
@@ -39,7 +39,7 @@
           <div class="mt-4 text-muted ls-2">{{ product.description }}</div>
         </div>
 
-        <div class="product-content mb-7">
+        <div class="product-content mb-5 mb-sm-7">
           <div class="text-center mb-3">
             <h3 class="title mb-0">每日行程</h3>
             <span class="english fs-5 title">Schedules</span>
@@ -92,7 +92,7 @@
 
       <div class="col-12 col-lg-5 product-add-cart">
         <div class="sticky-top">
-          <div class="product-description p-5 mx-auto mb-6">
+          <div class="product-description p-5 mx-auto mb-3 mb-sm-6">
             <div>
               <h4 class="fw-bold">{{ product.title }}</h4>
               <div class="my-4">

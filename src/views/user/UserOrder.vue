@@ -19,7 +19,7 @@
     </div>
   </section>
 
-  <section class="container order-info pb-7">
+  <section class="container order-info mb-sm-7">
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4 mb-3">
         <div class="sticky-top">
@@ -60,7 +60,7 @@
       </div>
 
       <div class="col-12 col-md-6 col-lg-8">
-        <div class="mb-5">
+        <div class="mb-4 mb-sm-5">
           <div
             class="p-3 mb-2 bg-secondary rounded-3 d-flex border border-1"
             v-for="product in products"

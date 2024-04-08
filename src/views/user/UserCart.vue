@@ -9,7 +9,7 @@
     </div>
   </section>
 
-  <section class="container mb-7">
+  <section class="container mb-5 mb-md-7">
     <!-- if cart is empty -->
     <div
       class="d-flex flex-column align-items-center text-muted"
@@ -25,19 +25,19 @@
     <div class="row">
       <div class="col-12 col-lg-8 mb-5 mb-lg-0">
         <div
-          class="p-3 mb-2 bg-secondary rounded-3 d-flex border border-1"
+          class="p-3 mb-2 bg-secondary rounded-3 d-flex flex-column-reverse flex-md-row border border-1"
           v-for="product in carts.carts"
           :key="product.id"
         >
           <div class="row gx-2 align-items-center">
-            <div class="col-12 col-sm-3 mb-1 mb-sm-0">
+            <div class="col-12 col-md-3 mb-1 mb-md-0">
               <img
                 :src="product.product.imageUrl"
                 :alt="product.product.title"
                 class="w-100 rounded-3"
               />
             </div>
-            <div class="col-12 col-sm-5 mb-1 mb-sm-0">
+            <div class="col-12 col-md-5 mb-1 mb-md-0">
               <span class="fs-5">{{ product.product.title }}</span>
               <br />
               <del class="text-muted fs-7">
@@ -53,9 +53,9 @@
                 }}
               </span>
             </div>
-            <div class="col-12 col-sm-2">
+            <div class="col-12 col-md-2">
               <select
-                class="form-select form-select-sm mb-1 mb-sm-0"
+                class="form-select form-select-sm mb-1 mb-md-0"
                 :disabled="isLoading"
                 v-model="product.qty"
                 @change="changeQty(product, product.qty)"
@@ -63,13 +63,13 @@
                 <option v-for="i in 10" :key="i" :value="i">{{ i }} 張</option>
               </select>
             </div>
-            <div class="col-12 col-sm-2 text-end text-primary">
+            <div class="col-12 col-md-2 text-end text-primary">
               小計 ${{ product.total ? product.total.toLocaleString('en-US') : '' }}
             </div>
           </div>
           <button
             type="button"
-            class="btn ps-3"
+            class="btn py-0 ps-md-3 mb-3 mb-md-0"
             :disabled="isLoading"
             @click.prevent="deleteModal(false, product)"
             title="刪除此行程"

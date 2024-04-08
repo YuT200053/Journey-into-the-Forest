@@ -4,7 +4,7 @@
   // logo
   &-logo {
     margin-top: 350px;
-    width: 50%;
+    width: 80%;
     max-width: 500px;
     height: auto;
     z-index: 3;
@@ -101,6 +101,10 @@
 
     &-date {
       width: 150px;
+    }
+
+    .badge {
+      min-width: 80px;
     }
 
     &-text {

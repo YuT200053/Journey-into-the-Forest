@@ -66,7 +66,7 @@
 
           <VeeForm v-slot="{ errors }" @submit="addSub()" ref="form">
             <div class="d-flex justify-content-xl-end flex-column flex-sm-row">
-              <div class="me-1">
+              <div class="me-sm-1 mb-1 mb-sm-0">
                 <VeeField
                   id="email"
                   name="email"

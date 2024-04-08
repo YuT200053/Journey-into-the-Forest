@@ -8,7 +8,7 @@
     <h2 class="title text-dark-green">{{ area.name }}</h2>
     <span class="english">{{ area.engName }}</span>
   </div>
-  <div class="border-top border-bottom border-1 p-4 p-lg-5 mb-3 fw-normal text-muted">
+  <div class="border-top border-bottom border-1 py-4 p-sm-4 p-lg-5 fw-normal text-muted">
     <p
       v-for="(content, index) in area.content ? area.content.split(';') : ''"
       :key="'content' + index"
@@ -17,20 +17,20 @@
       {{ content }}
     </p>
   </div>
-  <div class="p-4 p-lg-5">
+  <div class="py-4 p-sm-4 p-lg-5">
     <div class="mb-2">
       <h4 class="title">園區資訊</h4>
       <span class="english fs-7 title">Information</span>
     </div>
     <ul class="area-information">
       <li class="ls-2 p-2 rounded-3">
-        <div class="d-flex">
+        <div class="d-flex flex-column flex-sm-row">
           <span class="text-dark-green me-3"><i class="bi bi-geo-alt-fill me-1"></i>園區地址</span>
           <a :href="area.mapUrl" title="前往 Google 地圖">{{ area.address }}</a>
         </div>
       </li>
       <li class="ls-2 p-2 rounded-3">
-        <div class="d-flex">
+        <div class="d-flex flex-column flex-sm-row">
           <span class="text-dark-green me-3"><i class="bi bi-clock me-1"></i>開園時間</span>
           <div>
             <span
@@ -44,7 +44,7 @@
         </div>
       </li>
       <li class="ls-2 p-2 rounded-3">
-        <div class="d-flex">
+        <div class="d-flex flex-column flex-sm-row">
           <span class="text-dark-green me-3"><i class="bi bi-telephone me-1"></i>聯繫電話</span>
           <table class="text-muted">
             <tr v-for="tel in area.tel" :key="tel.name">
@@ -69,21 +69,23 @@
         <span class="text-dark-green me-3">
           <i class="bi bi-ticket-perforated me-1"></i>園內門票
         </span>
-        <table class="table table-hover text-muted">
+        <table class="table table-sm table-hover text-muted fs-7 ls-0">
           <thead>
-            <tr class="text-dark text-center">
-              <th width="150">票種</th>
-              <th width="100">票價</th>
+            <tr class="text-dark-green">
+              <th width="120">票價</th>
               <th>說明</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(fee, index) in area.fee" :key="'fee' + index">
-              <td class="text-center">
-                {{ fee.feeType }} <span v-if="fee.dayType"> ({{ fee.dayType }})</span>
+              <td>
+                {{ fee.feeType }}
+                <span v-if="fee.dayType" class="text-muted"> ({{ fee.dayType }})</span><br /><span
+                  >${{ fee.fee }}</span
+                >
               </td>
-              <td class="text-center">${{ fee.fee }}</td>
-              <td class="fs-7 fw-normal">
+
+              <td class="fw-normal">
                 <span v-for="(memo, index) in fee.feeMemo.split(';')" :key="'memo' + index"
                   >{{ memo }}<br
                 /></span>
@@ -93,12 +95,7 @@
         </table>
         <div class="text-end fs-7">
           *
-          <a
-            href="https://recreation.forest.gov.tw/Forest/RA?typ_id=0100001"
-            class="fw-normal text-end"
-          >
-            查看園內其他門票價格
-          </a>
+          <a :href="area.url" class="fw-normal text-end"> 查看園內其他門票價格 </a>
         </div>
       </li>
     </ul>
@@ -106,7 +103,7 @@
 </template>
 
 <script>
-const { VITE_BASE_URL } = import.meta.env;
+// const { VITE_BASE_URL } = import.meta.env;
 import { toast } from '@/mixins/swalToast.js';
 
 export default {
@@ -121,7 +118,7 @@ export default {
       //   ${VITE_BASE_URL}
 
       this.axios
-        .get(`${VITE_BASE_URL}userAreas/userAreas.json`)
+        .get(`userAreas/userAreas.json`)
         .then((res) => {
           this.area = res.data.find((area) => area.id == id);
           console.log(this.area);

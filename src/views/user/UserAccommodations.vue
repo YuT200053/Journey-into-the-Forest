@@ -6,7 +6,7 @@
         <h1 class="title mb-0">園內住宿</h1>
         <span class="english fs-5 title">Accommodations</span>
       </div>
-      <p class="text-center ls-2 my-3 fw-normal text-muted">點選以下連結或撥打聯絡電話聯繫訂房</p>
+      <p class="text-center fs-7 my-3 fw-normal text-muted">點選以下連結或撥打聯絡電話聯繫訂房</p>
     </div>
   </section>
 

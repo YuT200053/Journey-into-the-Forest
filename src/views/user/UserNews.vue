@@ -12,28 +12,30 @@
     </div>
   </section>
 
-  <div class="container news-list p-5 mb-7">
-    <ul class="mb-0">
-      <li class="news-list-li fs-7 ls-2 fw-normal mb-3" v-for="news in news" :key="news.TRAILID">
-        <div class="d-flex flex-column flex-lg-row align-items-start">
-          <div class="news-list-date english text-primary me-3 mb-1 mb-lg-0">
-            {{ news.ANN_DATE.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3') }}
-          </div>
-          <span class="badge rounded-pill bg-primary me-3 mb-1 mb-lg-0">
-            {{ news.TR_TYP }}
-          </span>
-          <div>
-            <span class="news-list-title fw-bold text-dark-green">
-              {{ news.TR_CNAME }}
+  <div class="container">
+    <div class="news-list p-5 mb-5">
+      <ul class="mb-0">
+        <li class="news-list-li fs-7 ls-2 fw-normal mb-3" v-for="news in news" :key="news.TRAILID">
+          <div class="d-flex flex-column flex-lg-row align-items-start">
+            <div class="news-list-date english text-primary me-3 mb-1 mb-lg-0">
+              {{ news.ANN_DATE.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3') }}
+            </div>
+            <span class="badge rounded-pill bg-primary me-3 mb-1 mb-lg-0">
+              {{ news.TR_TYP }}
             </span>
-            <br />
-            <span class="news-list-content text-muted">
-              {{ news.TITLE }}
-            </span>
+            <div>
+              <span class="news-list-title fw-bold text-dark-green">
+                {{ news.TR_CNAME }}
+              </span>
+              <br />
+              <span class="news-list-content text-muted">
+                {{ news.TITLE }}
+              </span>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
