@@ -276,10 +276,10 @@
         class="area-swiper"
       >
         <SwiperSlide>
-          <a href="#" class="swiper-slide-link">
+          <RouterLink to="/areas/11" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">全年 24 小時開放</p>
-          </a>
+          </RouterLink>
           <img src="/userHome/area_阿里山.jpg" alt="阿里山" />
         </SwiperSlide>
         <SwiperSlide>
@@ -352,6 +352,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 const { VITE_URL, VITE_PATH } = import.meta.env;
+// const { VITE_BASE_URL } = import.meta.env;
 
 export default {
   components: {
@@ -382,6 +383,7 @@ export default {
   mounted() {
     const api = `${VITE_URL}/api/${VITE_PATH}/products`;
     this.isLoading = true;
+
     this.getNews().then(() => {
       // 使用 $nextTick() 等待 DOM 更新完成後執行操作
       this.$nextTick(() => {
@@ -401,6 +403,19 @@ export default {
         toast.fire({
           icon: 'error',
           title: '取得產品列表失敗。'
+        });
+      });
+
+    // ${VITE_BASE_URL}
+    this.axios
+      .get(`userAreas/userAreas.json`)
+      .then((res) => {
+        this.areas = res.data;
+      })
+      .catch(() => {
+        toast.fire({
+          icon: 'error',
+          title: '找不到資料！'
         });
       });
   }

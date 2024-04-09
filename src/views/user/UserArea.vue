@@ -121,7 +121,6 @@ export default {
       const { id } = this.$route.params;
 
       this.isLoading = true;
-
       this.axios
         .get(`${VITE_BASE_URL}userAreas/userAreas.json`)
         .then((res) => {
