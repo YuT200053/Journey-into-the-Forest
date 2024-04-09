@@ -1,5 +1,4 @@
 <template>
-  <!-- <VueLoading :active="isLoading" /> -->
   <section class="area-banner img-box mb-5">
     <div class="container">
       <div class="area-banner-title text-center w-100">
@@ -19,16 +18,9 @@
           v-model="area"
         >
           <option value="0" disabled selected>今天，你想去哪座森林？</option>
-          <option value="1">太平山國家森林遊樂區</option>
-          <option value="2">滿月圓國家森林遊樂區</option>
-          <option value="3">內洞國家森林遊樂區</option>
-          <option value="4">東眼山國家森林遊樂區</option>
-          <option value="5">觀霧國家森林遊樂區</option>
-          <option value="6">拉拉山國家森林遊樂區</option>
-          <option value="7">武陵國家森林遊樂區</option>
-          <option value="8">八仙山國家森林遊樂區</option>
-          <option value="9">大雪山國家森林遊樂區</option>
-          <option value="10">合歡山國家森林遊樂區</option>
+          <option :value="i" v-for="i in areas.length" :key="'area' + i">
+            {{ areas[i - 1].name }}
+          </option>
         </select>
       </div>
 
@@ -38,16 +30,33 @@
 </template>
 
 <script>
+const { VITE_BASE_URL } = import.meta.env;
+import { toast } from '@/mixins/swalToast.js';
+
 export default {
   data() {
     return {
-      area: '0'
+      area: '0',
+      areas: []
     };
   },
   methods: {
     changeArea() {
       this.$router.push(`/areas/${this.area}`);
     }
+  },
+  mounted() {
+    this.axios
+      .get(`${VITE_BASE_URL}userAreas/userAreas.json`)
+      .then((res) => {
+        this.areas = res.data;
+      })
+      .catch(() => {
+        toast.fire({
+          icon: 'error',
+          title: '找不到資料！'
+        });
+      });
   }
 };
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <VueLoading :active="isLoading" />
   <div class="area-img mb-4 mb-lg-5">
     <div class="img-box">
       <img :src="area.imageUrl" alt="" class="w-100" />
@@ -24,13 +25,13 @@
     </div>
     <ul class="area-information">
       <li class="ls-2 p-2 rounded-3">
-        <div class="d-flex flex-column flex-sm-row">
+        <div class="d-flex flex-column flex-md-row">
           <span class="text-dark-green me-3"><i class="bi bi-geo-alt-fill me-1"></i>園區地址</span>
           <a :href="area.mapUrl" title="前往 Google 地圖">{{ area.address }}</a>
         </div>
       </li>
       <li class="ls-2 p-2 rounded-3">
-        <div class="d-flex flex-column flex-sm-row">
+        <div class="d-flex flex-column flex-md-row">
           <span class="text-dark-green me-3"><i class="bi bi-clock me-1"></i>開園時間</span>
           <div>
             <span
@@ -44,7 +45,7 @@
         </div>
       </li>
       <li class="ls-2 p-2 rounded-3">
-        <div class="d-flex flex-column flex-sm-row">
+        <div class="d-flex flex-column flex-md-row">
           <span class="text-dark-green me-3"><i class="bi bi-telephone me-1"></i>聯繫電話</span>
           <table class="text-muted">
             <tr v-for="tel in area.tel" :key="tel.name">
@@ -105,24 +106,27 @@
 </template>
 
 <script>
-// const { VITE_BASE_URL } = import.meta.env;
+const { VITE_BASE_URL } = import.meta.env;
 import { toast } from '@/mixins/swalToast.js';
 
 export default {
   data() {
     return {
-      area: {}
+      area: {},
+      isLoading: false
     };
   },
   methods: {
     getArea() {
       const { id } = this.$route.params;
-      //   ${VITE_BASE_URL}
+
+      this.isLoading = true;
 
       this.axios
-        .get(`userAreas/userAreas.json`)
+        .get(`${VITE_BASE_URL}userAreas/userAreas.json`)
         .then((res) => {
           this.area = res.data.find((area) => area.id == id);
+          this.isLoading = false;
         })
         .catch(() => {
           toast.fire({
@@ -133,12 +137,11 @@ export default {
     }
   },
   watch: {
-    // 監聽 id 變化觸發 getArea
+    // 監聽 id 變化觸發 getArea()
     '$route.params': 'getArea'
   },
   mounted() {
     this.getArea();
-    console.log(this.$route.params);
   }
 };
 </script>
