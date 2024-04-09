@@ -15,6 +15,12 @@
     max-height: 50px;
   }
 
+  &-brand,
+  &-toggler {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
   .btn {
     position: relative;
 
