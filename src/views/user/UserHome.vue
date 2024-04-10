@@ -276,59 +276,59 @@
         class="area-swiper"
       >
         <SwiperSlide>
-          <RouterLink to="/areas/11" class="swiper-slide-link">
+          <RouterLink :to="{ name: 'area', params: { id: '12' } }" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">阿里山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">全年 24 小時開放</p>
           </RouterLink>
           <img src="/userHome/area_阿里山.jpg" alt="阿里山" />
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" class="swiper-slide-link">
+          <RouterLink :to="{ name: 'area', params: { id: '1' } }" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">太平山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">平日 06:00-18:00<br />假日 04:00-18:00</p>
-          </a>
+          </RouterLink>
           <img src="/userHome/area_太平山.jpg" alt="太平山" />
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" class="swiper-slide-link">
+          <RouterLink :to="{ name: 'area', params: { id: '9' } }" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">大雪山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">每日 06:30-17:00</p>
-          </a>
+          </RouterLink>
           <img src="/userHome/area_大雪山.jpg" alt="大雪山" />
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" class="swiper-slide-link">
+          <RouterLink :to="{ name: 'area', params: { id: '3' } }" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">內洞<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">平日 08:00-17:00<br />假日 07:00-17:00</p>
-          </a>
+          </RouterLink>
           <img src="/userHome/area_內洞.jpg" alt="內洞" />
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" class="swiper-slide-link">
+          <RouterLink :to="{ name: 'area', params: { id: '4' } }" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">東眼山<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">平日 08:00-17:00<br />假日 07:00-17:00</p>
-          </a>
+          </RouterLink>
           <img src="/userHome/area_東眼山.jpg" alt="東眼山" />
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" class="swiper-slide-link">
+          <RouterLink :to="{ name: 'area', params: { id: '7' } }" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">武陵<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">全年 24 小時開放<br />配合武陵農場</p>
-          </a>
+          </RouterLink>
           <img src="/userHome/area_武陵.jpg" alt="武陵" />
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" class="swiper-slide-link">
+          <RouterLink :to="{ name: 'area', params: { id: '11' } }" class="swiper-slide-link">
             <h4 class="fw-bold ls-5 text-white">奧萬大<br />國家森林遊樂區</h4>
             <p class="fs-7 px-3 py-2 text-white mb-0">每天 08:00-17:00</p>
-          </a>
+          </RouterLink>
           <img src="/userHome/area_奧萬大.jpg" alt="奧萬大" />
         </SwiperSlide>
       </Swiper>
 
       <div class="container my-5">
         <RouterLink
-          to="/areas"
+          :to="{ name: 'area', params: { id: '0' } }"
           class="read-all link-dark-green text-center border-top border-bottom border-1 py-5 d-flex justify-content-center align-items-center fs-4 ls-5"
         >
           <span class="pe-2">所有森林</span>

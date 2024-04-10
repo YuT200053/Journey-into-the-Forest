@@ -54,6 +54,7 @@ const router = createRouter({
           children: [
             {
               path: ':id',
+              name: 'area',
               component: () => import('../views/user/UserArea.vue')
             }
           ]

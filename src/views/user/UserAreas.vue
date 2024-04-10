@@ -24,7 +24,7 @@
         </select>
       </div>
 
-      <div class="area-info p-4 p-lg-5" v-if="area !== '0'"><router-view /></div>
+      <div class="area-info p-4 p-lg-5" v-if="area !== '0'"><RouterView /></div>
     </div>
   </section>
 </template>
@@ -43,7 +43,15 @@ export default {
   methods: {
     changeArea() {
       this.$router.push(`/areas/${this.area}`);
+    },
+    changeId() {
+      this.area = this.$route.params.id;
+      this.changeArea();
     }
+  },
+  watch: {
+    // 當網址改變，select的值也改變
+    '$route.params': 'changeId'
   },
   mounted() {
     this.axios
@@ -57,6 +65,7 @@ export default {
           title: '找不到資料！'
         });
       });
+    this.changeId();
   }
 };
 </script>

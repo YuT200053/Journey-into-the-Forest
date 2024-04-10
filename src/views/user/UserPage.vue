@@ -24,7 +24,9 @@
               <RouterLink to="/products" class="nav-link">漫遊行程</RouterLink>
             </li>
             <li class="nav-item px-3 border-end-lg border-1 py-2">
-              <RouterLink to="/areas" class="nav-link" href="#">所有森林</RouterLink>
+              <RouterLink :to="{ name: 'area', params: { id: '0' } }" class="nav-link" href="#"
+                >所有森林</RouterLink
+              >
             </li>
             <li class="nav-item px-3 py-2">
               <RouterLink to="/accommodations" class="nav-link">園內住宿</RouterLink>
